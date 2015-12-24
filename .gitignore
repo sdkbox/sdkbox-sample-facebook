@@ -1,0 +1,13 @@
+.*
+contents.xcworkspacedata
+xcuserdata/
+
+cpp/bin/
+cpp/proj.ios_mac/build/
+
+cpp/proj.android/local.properties
+cpp/proj.android/assets/
+cpp/proj.android/obj/
+cpp/proj.android/bin/
+cpp/proj.android/gen/
+cpp/proj.android/libs/
