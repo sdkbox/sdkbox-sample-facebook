@@ -34,5 +34,7 @@ bool HelloWorld::init()
     background->setPosition(Vec2(size.width / 2, winsize.height - size.height / 2));
     addChild(background);
 
+    CCLOG("Sample Startup");
+
     return true;
 }

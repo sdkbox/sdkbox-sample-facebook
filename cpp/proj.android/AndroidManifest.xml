@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.sdkbox.sample.facebook"
+      package="com.sdkbox.sample.facebook-cpp"
       android:versionCode="1"
       android:versionName="1.0"
       android:installLocation="auto">
@@ -10,7 +10,7 @@
 
     <application android:label="@string/app_name"
                  android:icon="@drawable/icon">
-					 
+
         <!-- Tell Cocos2dxActivity the name of our .so -->
         <meta-data android:name="android.app.lib_name"
 	              android:value="cocos2dcpp" />
@@ -35,4 +35,4 @@
                       android:xlargeScreens="true"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>
-</manifest> 
+</manifest>
