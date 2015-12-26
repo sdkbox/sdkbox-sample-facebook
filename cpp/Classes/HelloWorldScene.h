@@ -14,6 +14,10 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
+private:
+    void createTestMenu();
+
 };
 
 #endif // __HELLOWORLD_SCENE_H__

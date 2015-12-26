@@ -28,13 +28,49 @@ bool HelloWorld::init()
         return false;
     }
 
-    auto winsize = Director::getInstance()->getWinSize();
-    auto background = Sprite::create("HelloWorld.png");
-    auto size = background->getContentSize();
-    background->setPosition(Vec2(size.width / 2, winsize.height - size.height / 2));
-    addChild(background);
-
     CCLOG("Sample Startup");
+
+    // add logo
+    auto winsize = Director::getInstance()->getWinSize();
+    auto logo = Sprite::create("Logo.png");
+    auto logoSize = logo->getContentSize();
+    logo->setPosition(Vec2(logoSize.width / 2,
+                           winsize.height - logoSize.height / 2));
+    addChild(logo);
+
+    // add quit button
+    auto label = Label::createWithSystemFont("QUIT", "sans", 32);
+    auto quit = MenuItemLabel::create(label, [](Ref*){
+        exit(0);
+    });
+    auto labelSize = label->getContentSize();
+    quit->setPosition(Vec2(winsize.width / 2 - labelSize.width / 2 - 16,
+                           -winsize.height / 2 + labelSize.height / 2 + 16));
+    addChild(Menu::create(quit, NULL));
+
+    // add test menu
+    createTestMenu();
 
     return true;
 }
+
+void HelloWorld::createTestMenu()
+{
+    auto menu = Menu::create();
+
+    menu->addChild(MenuItemLabel::create(Label::createWithSystemFont("Test Item 1", "sans", 24), [](Ref*){
+        CCLOG("Test Item 1");
+    }));
+
+    menu->addChild(MenuItemLabel::create(Label::createWithSystemFont("Test Item 2", "sans", 24), [](Ref*){
+        CCLOG("Test Item 2");
+    }));
+
+    menu->addChild(MenuItemLabel::create(Label::createWithSystemFont("Test Item 3", "sans", 24), [](Ref*){
+        CCLOG("Test Item 3");
+    }));
+
+    menu->alignItemsVerticallyWithPadding(10);
+    addChild(menu);
+}
+
