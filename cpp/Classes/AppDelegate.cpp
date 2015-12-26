@@ -27,7 +27,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("facebook", Rect(0, 0, 960, 640));
+        glview = GLViewImpl::createWithRect("facebook", Rect(0, 0, 640, 960));
         director->setOpenGLView(glview);
     }
 
