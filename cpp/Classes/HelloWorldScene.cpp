@@ -58,19 +58,19 @@ void HelloWorld::createTestMenu()
 {
     auto menu = Menu::create();
 
-    menu->addChild(MenuItemLabel::create(Label::createWithSystemFont("Test Item 1", "sans", 24), [](Ref*){
+    menu->addChild(MenuItemLabel::create(Label::createWithSystemFont("Test Item 1", "sans", 28), [](Ref*){
         CCLOG("Test Item 1");
     }));
 
-    menu->addChild(MenuItemLabel::create(Label::createWithSystemFont("Test Item 2", "sans", 24), [](Ref*){
+    menu->addChild(MenuItemLabel::create(Label::createWithSystemFont("Test Item 2", "sans", 28), [](Ref*){
         CCLOG("Test Item 2");
     }));
 
-    menu->addChild(MenuItemLabel::create(Label::createWithSystemFont("Test Item 3", "sans", 24), [](Ref*){
+    menu->addChild(MenuItemLabel::create(Label::createWithSystemFont("Test Item 3", "sans", 28), [](Ref*){
         CCLOG("Test Item 3");
     }));
 
-    menu->alignItemsVerticallyWithPadding(10);
+    menu->alignItemsVerticallyWithPadding(24);
     addChild(menu);
 }
 
