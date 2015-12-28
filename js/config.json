@@ -1,6 +1,6 @@
 {
     "init_cfg":{
-       "isLandscape": true,
+       "isLandscape": false,
        "isWindowTop": false,
        "name": "facebook_js",
        "width": 960,
