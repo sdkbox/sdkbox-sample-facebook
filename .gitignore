@@ -13,4 +13,10 @@ cpp/proj.android/gen/
 cpp/proj.android/libs/
 
 lua/frameworks/runtime-src/proj.ios_mac/build
-
+lua/frameworks/runtime-src/proj.android/local.properties
+lua/frameworks/runtime-src/proj.android/assets/
+lua/frameworks/runtime-src/proj.android/obj/
+lua/frameworks/runtime-src/proj.android/bin/
+lua/frameworks/runtime-src/proj.android/gen/
+lua/frameworks/runtime-src/proj.android/libs/
+lua/simulator
