@@ -44,9 +44,10 @@ bool HelloWorld::init()
         exit(0);
     });
     auto labelSize = label->getContentSize();
-    quit->setPosition(Vec2(winsize.width / 2 - labelSize.width / 2 - 16,
-                           -winsize.height / 2 + labelSize.height / 2 + 16));
-    addChild(Menu::create(quit, NULL));
+    auto menu = Menu::create(quit, NULL);
+    menu->setPosition(Vec2(winsize.width - labelSize.width / 2 - 16,
+                           labelSize.height / 2 + 16));
+    addChild(menu);
 
     // add test menu
     createTestMenu();
