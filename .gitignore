@@ -20,3 +20,12 @@ lua/frameworks/runtime-src/proj.android/bin/
 lua/frameworks/runtime-src/proj.android/gen/
 lua/frameworks/runtime-src/proj.android/libs/
 lua/simulator
+
+js/frameworks/runtime-src/proj.ios_mac/build
+js/frameworks/runtime-src/proj.android/local.properties
+js/frameworks/runtime-src/proj.android/assets/
+js/frameworks/runtime-src/proj.android/obj/
+js/frameworks/runtime-src/proj.android/bin/
+js/frameworks/runtime-src/proj.android/gen/
+js/frameworks/runtime-src/proj.android/libs/
+js/simulator
