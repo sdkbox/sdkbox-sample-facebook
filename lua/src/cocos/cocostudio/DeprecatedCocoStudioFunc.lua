@@ -4,7 +4,7 @@ end
 
 --tip
 local function deprecatedTip(old_name,new_name)
-    print("\n********** \n"..old_name.." was deprecated please use ".. new_name .. " instead.\n**********")
+    -- print("\n********** \n"..old_name.." was deprecated please use ".. new_name .. " instead.\n**********")
 end
 
 --functions of GUIReader will be deprecated begin
@@ -75,7 +75,7 @@ CCArmatureDataManager.sharedArmatureDataManager = CCArmatureDataManagerDeprecate
 
 function CCArmatureDataManagerDeprecated.purge()
     deprecatedTip("CCArmatureDataManager:purge","ccs.ArmatureDataManager:destoryInstance")
-    return ccs.ArmatureDataManager:destoryInstance() 
+    return ccs.ArmatureDataManager:destoryInstance()
 end
 CCArmatureDataManager.purge = CCArmatureDataManagerDeprecated.purge
 --functions of CCArmatureDataManager will be deprecated end

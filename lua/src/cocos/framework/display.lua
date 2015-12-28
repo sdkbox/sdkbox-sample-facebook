@@ -58,7 +58,7 @@ end
 
 local function setDesignResolution(r, framesize)
     if r.autoscale == "FILL_ALL" then
-        view:setDesignResolutionSize(framesize.width, framesize.height, cc.ResolutionPolicy.FILL_ALL)
+        view:setDesignResolutionSize(framesize.width, framesize.height, cc.ResolutionPolicy.SHOW_ALL)
     else
         local scaleX, scaleY = framesize.width / r.width, framesize.height / r.height
         local width, height = framesize.width, framesize.height

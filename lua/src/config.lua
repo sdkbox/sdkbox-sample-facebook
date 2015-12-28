@@ -15,5 +15,5 @@ CC_DISABLE_GLOBAL = true
 CC_DESIGN_RESOLUTION = {
     width = 640,
     height = 960,
-    autoscale = "FIXED_HEIGHT",
+    autoscale = "FILL_ALL",
 }

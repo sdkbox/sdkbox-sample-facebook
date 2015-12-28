@@ -4,6 +4,11 @@ local MainScene = class("MainScene", cc.load("mvc").ViewBase)
 function MainScene:onCreate()
     print("Sample Startup")
 
+    local logo = cc.Sprite:create("Logo.png")
+    local logoSize = logo:getContentSize()
+    logo:setPosition(cc.p(logoSize.width / 2, display.top - logoSize.height / 2))
+    self:addChild(logo)
+
     local label = cc.Label:createWithSystemFont("QUIT", "sans", 32)
     local quit = cc.MenuItemLabel:create(label)
     quit:onClicked(function()
