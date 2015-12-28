@@ -11,3 +11,6 @@ cpp/proj.android/obj/
 cpp/proj.android/bin/
 cpp/proj.android/gen/
 cpp/proj.android/libs/
+
+lua/frameworks/runtime-src/proj.ios_mac/build
+
