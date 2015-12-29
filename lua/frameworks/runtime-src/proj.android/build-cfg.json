@@ -1,9 +1,9 @@
 {
     "ndk_module_path" :[
-        "../../../../../sdkbox-cocos2d-x-3.9-binary",
-        "../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/",
-        "../../../../../sdkbox-cocos2d-x-3.9-binary/external",
-        "../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/scripting"
+        "../../../../../sdkbox-cocos2d-x-binary",
+        "../../../../../sdkbox-cocos2d-x-binary/cocos/",
+        "../../../../../sdkbox-cocos2d-x-binary/external",
+        "../../../../../sdkbox-cocos2d-x-binary/cocos/scripting"
     ],
     "copy_resources": [
         {

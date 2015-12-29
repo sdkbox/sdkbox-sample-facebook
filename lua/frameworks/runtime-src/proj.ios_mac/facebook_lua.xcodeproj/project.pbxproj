@@ -91,8 +91,8 @@
 		5200BEC91A53D9A500AC45E4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		521A8E6E19F0C3D200D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6F19F0C3D200D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
-		55AA4481BDB4DD681262F849 /* libcocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d iOS.a"; path = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/prebuilt/ios/libcocos2d iOS.a"; sourceTree = "<absolute>"; };
-		74504302983F5C5C58C8380A /* libluacocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluacocos2d iOS.a"; path = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/prebuilt/ios/libluacocos2d iOS.a"; sourceTree = "<absolute>"; };
+		55AA4481BDB4DD681262F849 /* libcocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d iOS.a"; path = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/prebuilt/ios/libcocos2d iOS.a"; sourceTree = "<absolute>"; };
+		74504302983F5C5C58C8380A /* libluacocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluacocos2d iOS.a"; path = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/prebuilt/ios/libluacocos2d iOS.a"; sourceTree = "<absolute>"; };
 		9FA3AE4D1BE9BCC900FC9645 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		9FC7603F1A67791200D1E6E7 /* CodeIDESupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeIDESupport.h; sourceTree = "<group>"; };
 		9FC760401A67791200D1E6E7 /* lang */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lang; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		C03781B718BF655400FE4F13 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../../res; sourceTree = "<group>"; };
 		C03781B818BF655400FE4F13 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../src; sourceTree = "<group>"; };
 		C05D1C111923449100B808A4 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = config.json; path = ../../../config.json; sourceTree = "<group>"; };
-		C39F4EA6B9087FA84FAC007D /* libsimulator iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsimulator iOS.a"; path = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/prebuilt/ios/libsimulator iOS.a"; sourceTree = "<absolute>"; };
+		C39F4EA6B9087FA84FAC007D /* libsimulator iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsimulator iOS.a"; path = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/prebuilt/ios/libsimulator iOS.a"; sourceTree = "<absolute>"; };
 		D6B061341803AC000077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DA9E7D871AB1ABCC004B27C8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		ED545A881B68A23E00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -426,7 +426,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/base $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/physics $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/math/kazmath $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/2d $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/ui $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/network $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/audio/include $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/editor-support $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/extensions $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/external $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/external/chipmunk/include/chipmunk $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/external/lua/luajit/include $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/external/lua/tolua $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/scripting/lua-bindings/manual $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/scripting/lua-bindings/auto $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/tools/simulator/libsimulator/lib $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/tools/simulator/libsimulator/lib/protobuf-lite";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/base $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/physics $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/math/kazmath $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/2d $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/ui $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/network $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/audio/include $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/editor-support $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/extensions $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/external $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/external/chipmunk/include/chipmunk $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/external/lua/luajit/include $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/external/lua/tolua $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/scripting/lua-bindings/manual $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/scripting/lua-bindings/auto $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/tools/simulator/libsimulator/lib $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/tools/simulator/libsimulator/lib/protobuf-lite";
 			};
 			name = Debug;
 		};
@@ -449,7 +449,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/base $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/physics $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/math/kazmath $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/2d $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/ui $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/network $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/audio/include $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/editor-support $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/extensions $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/external $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/external/chipmunk/include/chipmunk $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/external/lua/luajit/include $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/external/lua/tolua $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/scripting/lua-bindings/manual $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/scripting/lua-bindings/auto $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/tools/simulator/libsimulator/lib $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/tools/simulator/libsimulator/lib/protobuf-lite";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/base $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/physics $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/math/kazmath $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/2d $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/ui $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/network $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/audio/include $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/editor-support $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/extensions $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/external $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/external/chipmunk/include/chipmunk $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/external/lua/luajit/include $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/external/lua/tolua $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/scripting/lua-bindings/manual $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/scripting/lua-bindings/auto $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/tools/simulator/libsimulator/lib $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/tools/simulator/libsimulator/lib/protobuf-lite";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -471,11 +471,11 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../Classes/protobuf-lite",
 					"$(SRCROOT)/../Classes",
-					"$(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/tools/simulator/libsimulator/lib",
+					"$(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/tools/simulator/libsimulator/lib",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/prebuilt/ios";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/prebuilt/ios";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -490,7 +490,7 @@
 				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/platform/ios $(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/platform/ios $(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
@@ -511,11 +511,11 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../Classes/protobuf-lite",
 					"$(SRCROOT)/../Classes",
-					"$(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/tools/simulator/libsimulator/lib",
+					"$(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/tools/simulator/libsimulator/lib",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/prebuilt/ios";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/prebuilt/ios";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -530,7 +530,7 @@
 				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../../sdkbox-cocos2d-x-3.9-binary/cocos/platform/ios $(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../../sdkbox-cocos2d-x-binary/cocos/platform/ios $(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
