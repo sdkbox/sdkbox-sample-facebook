@@ -11,6 +11,10 @@ cpp/proj.android/obj/
 cpp/proj.android/bin/
 cpp/proj.android/gen/
 cpp/proj.android/libs/
+cpp/proj.android/jars/facebook_lib/local.properties
+cpp/proj.android/jars/facebook_lib/proguard-project.txt
+cpp/proj.android/jars/facebook_lib/bin/
+cpp/proj.android/jars/facebook_lib/gen/
 
 lua/frameworks/runtime-src/proj.ios_mac/build
 lua/frameworks/runtime-src/proj.android/local.properties
