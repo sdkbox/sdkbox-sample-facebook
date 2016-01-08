@@ -360,11 +360,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
-				TargetAttributes = {
-					F293B3C715EB7BE500256477 = {
-						DevelopmentTeam = 6X52MF4L79;
-					};
-				};
 			};
 			buildConfigurationList = F293B3C215EB7BE500256477 /* Build configuration list for PBXProject "facebook_lua" */;
 			compatibilityVersion = "Xcode 3.2";
