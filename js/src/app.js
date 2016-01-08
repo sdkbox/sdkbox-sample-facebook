@@ -31,23 +31,106 @@ var HelloWorldLayer = cc.Layer.extend({
     },
 
     createTestMenu:function() {
-        var item1 = new cc.MenuItemLabel(new cc.LabelTTF("Test Item 1", "sans", 28), function() {
-            cc.log("Test Item 1");
+        cc.MenuItemFont.setFontName("sans");
+
+        if (typeof sdkbox === "undefined") {
+            cc.log("sdkbox undefined");
+            return true;
+        }
+
+        sdkbox.PluginFacebook.init();
+        sdkbox.PluginFacebook.setListener({
+            onLogin: function(isLogin, msg) {
+              if(isLogin){
+                cc.log("login successful");
+              }
+              else {
+                cc.log("login failed");
+              }
+            },
+            onAPI: function(tag, data) {
+              cc.log("============");
+              cc.log(tag);
+              cc.log(data);
+            },
+            onSharedSuccess: function(data) {
+              cc.log("share successful");
+            },
+            onSharedFailed: function(data) {
+              cc.log("share failed");
+            },
+            onSharedCancel: function() {
+              cc.log("share canceled");
+            },
+            onPermission: function(isLogin, msg) {
+              if(isLogin) {
+                cc.log("request permission successful");
+              }
+              else {
+                cc.log("request permission failed");
+              }
+            }
         });
 
-        var item2 = new cc.MenuItemLabel(new cc.LabelTTF("Test Item 2", "sans", 28), function() {
-            cc.log("Test Item 2");
-        });
+        var btnLogin = new cc.MenuItemFont("Login", function(){
+          sdkbox.PluginFacebook.login();
+        }, this);
 
-        var item3 = new cc.MenuItemLabel(new cc.LabelTTF("Test Item 3", "sans", 28), function() {
-            cc.log("Test Item 3");
-        });
+        var btnLogout = new cc.MenuItemFont("Logout", function(){
+          sdkbox.PluginFacebook.logout();
+        }, this);
 
+        var btnCheck = new cc.MenuItemFont("Check", function(){
+          cc.log("==============")
+          cc.log("isLogin: " + sdkbox.PluginFacebook.isLoggedIn());
+          cc.log("userid: " + sdkbox.PluginFacebook.getUserID());
+          cc.log("permissions: ");
+          var perms = sdkbox.PluginFacebook.getPermissionList();
+          for (var i = 0; i < perms.length; i++) {
+            cc.log("===> " + perms[i]);
+          }
+          cc.log("==============")
+        }, this);
+
+        var btnReadPerm = new cc.MenuItemFont("Read Perm", function(){
+          sdkbox.PluginFacebook.requestReadPermissions(["public_profile", "email"]);
+        }, this);
+
+        var btnWritePerm = new cc.MenuItemFont("Write Perm", function(){
+          sdkbox.PluginFacebook.requestPublishPermissions(["publish_actions"]);
+        }, this);
+
+        var btnShareLink = new cc.MenuItemFont("Share Link", function(){
+          var info = new Object();
+          info.type  = "link";
+          info.link  = "http://www.cocos2d-x.org";
+          info.title = "cocos2d-x";
+          info.text  = "Best Game Engine";
+          info.image = "http://cocos2d-x.org/images/logo.png";
+          sdkbox.PluginFacebook.share(info);
+        }, this);
+
+        var btnDialogLink = new cc.MenuItemFont("Dialog Link", function(){
+          var info = new Object();
+          info.type  = "link";
+          info.link  = "http://www.cocos2d-x.org";
+          info.title = "cocos2d-x";
+          info.text  = "Best Game Engine";
+          info.image = "http://cocos2d-x.org/images/logo.png";
+          sdkbox.PluginFacebook.dialog(info);
+        }, this);
+
+        var btnInvite = new cc.MenuItemFont("Invite", function () {
+          sdkbox.PluginFacebook.inviteFriends(
+            "https://fb.me/322164761287181",
+            "http://www.cocos2d-x.org/attachments/801/cocos2dx_portrait.png");
+        }, this);
+
+        var menu = new cc.Menu(btnLogin, btnLogout, btnCheck, btnReadPerm, btnWritePerm, btnShareLink, btnDialogLink, btnInvite);
         var winsize = cc.winSize;
-        var menu = new cc.Menu(item1, item2, item3);
-        menu.x = winsize.width / 2;
-        menu.y = winsize.height / 2;
-        menu.alignItemsVerticallyWithPadding(20);
+        menu.x = winsize.width/2;
+        menu.y = winsize.height/2;
+        menu.alignItemsVerticallyWithPadding(5);
         this.addChild(menu);
     }
 });

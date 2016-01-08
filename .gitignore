@@ -33,3 +33,7 @@ js/frameworks/runtime-src/proj.android/bin/
 js/frameworks/runtime-src/proj.android/gen/
 js/frameworks/runtime-src/proj.android/libs/
 js/simulator
+js/frameworks/runtime-src/proj.android/jars/facebook_lib/bin/
+js/frameworks/runtime-src/proj.android/jars/facebook_lib/gen/
+js/frameworks/runtime-src/proj.android/jars/facebook_lib/local.properties
+js/frameworks/runtime-src/proj.android/jars/facebook_lib/proguard-project.txt
