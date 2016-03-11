@@ -28,6 +28,8 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 @implementation AppController
 
 #pragma mark -
@@ -84,9 +86,12 @@ static AppDelegate s_sharedApplication;
     cocos2d::GLView *glview = cocos2d::GLViewImpl::createWithEAGLView(eaglView);
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
+    bool ret= [[FBSDKApplicationDelegate sharedInstance] application:application
+                                       didFinishLaunchingWithOptions:launchOptions];
+    
     app->run();
 
-    return YES;
+    return ret;
 }
 
 
@@ -105,6 +110,7 @@ static AppDelegate s_sharedApplication;
      */
      //We don't need to call this method any more. It will interupt user defined game pause&resume logic
     /* cocos2d::Director::getInstance()->resume(); */
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -127,6 +133,14 @@ static AppDelegate s_sharedApplication;
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation
+            ];
 }
 
 
