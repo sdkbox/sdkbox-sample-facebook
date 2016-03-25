@@ -32,6 +32,7 @@ var HelloWorldLayer = cc.Layer.extend({
 
     createTestMenu:function() {
         cc.MenuItemFont.setFontName("sans");
+        cc.MenuItemFont.setFontSize(40);
 
         if (typeof sdkbox === "undefined") {
             cc.log("sdkbox undefined");
@@ -130,7 +131,7 @@ var HelloWorldLayer = cc.Layer.extend({
         var winsize = cc.winSize;
         menu.x = winsize.width/2;
         menu.y = winsize.height/2;
-        menu.alignItemsVerticallyWithPadding(5);
+        menu.alignItemsVerticallyWithPadding(20);
         this.addChild(menu);
     }
 });

@@ -24,6 +24,7 @@ end
 
 function MainScene:setupTestMenu()
     cc.MenuItemFont:setFontName("sans")
+    cc.MenuItemFont:setFontSize(40)
 
     sdkbox.PluginFacebook:init()
     sdkbox.PluginFacebook:setListener(function(args)
@@ -121,7 +122,7 @@ function MainScene:setupTestMenu()
     end)
 
     local menu = cc.Menu:create(btnLogin, btnLogout, btnCheck, btnReadPerm, btnWritePerm, btnShareLink, btnDialogLink, btnInvite)
-    menu:alignItemsVerticallyWithPadding(5)
+    menu:alignItemsVerticallyWithPadding(15)
     self:addChild(menu)
 end
 

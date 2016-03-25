@@ -72,6 +72,7 @@ bool HelloWorld::init()
 void HelloWorld::createTestMenu()
 {
     MenuItemFont::setFontName("sans");
+    MenuItemFont::setFontSize(40);
 
     _captureFilename = "";
     Size size = Director::getInstance()->getWinSize();
@@ -106,7 +107,7 @@ void HelloWorld::createTestMenu()
                                  MenuItemFont::create("invite friends", CC_CALLBACK_1(HelloWorld::onInviteFriends, this)),
                                  NULL);
         
-        menu->alignItemsVerticallyWithPadding(5);
+        menu->alignItemsVerticallyWithPadding(20);
         menu->setPosition(Vec2(size.width/2, size.height/2));
         addChild(menu);
         
