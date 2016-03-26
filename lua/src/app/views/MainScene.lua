@@ -1,6 +1,6 @@
 
 local MainScene = class("MainScene", cc.load("mvc").ViewBase)
-
+cc.log = print
 function MainScene:onCreate()
     print("Sample Startup")
 
@@ -28,15 +28,16 @@ function MainScene:setupTestMenu()
 
     sdkbox.PluginFacebook:init()
     sdkbox.PluginFacebook:setListener(function(args)
+
+        dump(args)
+
         if "onLogin" == args.name then
-            local isLogin = args.isLogin;
-            local msg = args.msg;
+            local isLogin = args.isLogin
             if isLogin then
                 cc.log("login successful")
             else
                 cc.log("login failed")
             end
-            cc.log(msg)
         elseif "onPermission" ==  args.name then
             local isLogin = args.isLogin;
             local msg = args.msg;
@@ -45,7 +46,6 @@ function MainScene:setupTestMenu()
             else
                 cc.log("request permission failed")
             end
-            cc.log(msg)
         elseif "onAPI" ==  args.name then
             local tag = args.tag;
             local jsonData = args.jsonData;
@@ -77,7 +77,7 @@ function MainScene:setupTestMenu()
 
     local btnCheck = cc.MenuItemFont:create("Check"):onClicked(function()
         cc.log("==============")
-        cc.log("isLogin: " .. sdkbox.PluginFacebook:isLoggedIn())
+        cc.log("isLogin: " .. tostring(sdkbox.PluginFacebook:isLoggedIn()))
         cc.log("userid: " .. sdkbox.PluginFacebook:getUserID())
         cc.log("permissions: ")
         local perms = sdkbox.PluginFacebook:getPermissionList()
