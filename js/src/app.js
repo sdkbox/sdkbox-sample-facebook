@@ -39,14 +39,29 @@ var HelloWorldLayer = cc.Layer.extend({
             return true;
         }
 
+        var self = this;
+        var size = cc.winSize;
+        var coinsLabel = cc.Label.createWithSystemFont("Hello Js", "Arial", 32);
+        coinsLabel.setColor(cc.color(255, 0, 0, 128));
+        coinsLabel.setPosition(size.width/2, 80);
+        self.addChild(coinsLabel);
+        self.coinsLabel = coinsLabel;
+        printf = cc.log;
+        var showText = function(msg) {
+          printf(msg);
+          self.coinsLabel.setString(msg);
+        }
+        self.showText = showText;
+
         sdkbox.PluginFacebook.init();
         sdkbox.PluginFacebook.setListener({
             onLogin: function(isLogin, msg) {
               if(isLogin){
-                cc.log("login successful");
+                self.showText("login successful");
+
               }
               else {
-                cc.log("login failed");
+                self.showText("login failed");
               }
             },
             onAPI: function(tag, data) {
@@ -55,20 +70,20 @@ var HelloWorldLayer = cc.Layer.extend({
               cc.log(data);
             },
             onSharedSuccess: function(data) {
-              cc.log("share successful");
+              self.showText("share successful");
             },
             onSharedFailed: function(data) {
-              cc.log("share failed");
+              self.showText("share failed");
             },
             onSharedCancel: function() {
-              cc.log("share canceled");
+              self.showText("share canceled");
             },
             onPermission: function(isLogin, msg) {
               if(isLogin) {
-                cc.log("request permission successful");
+                self.showText("request permission successful");
               }
               else {
-                cc.log("request permission failed");
+                self.showText("request permission failed");
               }
             }
         });

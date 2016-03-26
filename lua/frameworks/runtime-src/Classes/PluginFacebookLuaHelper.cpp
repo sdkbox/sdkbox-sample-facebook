@@ -323,7 +323,7 @@ int lua_PluginFacebookLua_PluginFacebook_share(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S) - 1;
 
-    if (argc == 4)
+    if (argc == 1)
     {
         LuaValueDict arg0;
         ok &= luaval_to_ccluavaluemap(tolua_S, 2, &arg0);

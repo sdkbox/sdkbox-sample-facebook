@@ -23,6 +23,16 @@ function MainScene:onCreate()
 end
 
 function MainScene:setupTestMenu()
+    self.status =
+    cc.Label:createWithSystemFont("Hello Lua", "Arial", 32)
+            :move(display.cx, 100)
+            :addTo(self)
+    self.status:setColor(cc.c3b(255, 0, 0))
+    local showText = function(msg)
+        print(msg)
+        self.status:setString(msg)
+    end
+
     cc.MenuItemFont:setFontName("sans")
     cc.MenuItemFont:setFontSize(40)
 
@@ -32,19 +42,19 @@ function MainScene:setupTestMenu()
         dump(args)
 
         if "onLogin" == args.name then
-            local isLogin = args.isLogin
+            local isLogin = args.isLoggedIn
             if isLogin then
-                cc.log("login successful")
+                showText("login successful")
             else
-                cc.log("login failed")
+                showText("login failed")
             end
         elseif "onPermission" ==  args.name then
-            local isLogin = args.isLogin;
+            local isLogin = args.ok
             local msg = args.msg;
             if isLogin then
-                cc.log("request permission successful")
+                showText("request permission successful")
             else
-                cc.log("request permission failed")
+                showText("request permission failed")
             end
         elseif "onAPI" ==  args.name then
             local tag = args.tag;
@@ -54,14 +64,14 @@ function MainScene:setupTestMenu()
             cc.log(jsonData)
         elseif "onSharedSuccess" ==  args.name then
             local msg = args.message
-            cc.log("share successful")
+            showText("share successful")
             cc.log(msg)
         elseif "onSharedFailed" ==  args.name then
             local msg = args.message
-            cc.log("share failed")
+            showText("share failed")
             cc.log(msg)
         elseif "onSharedCancel" ==  args.name then
-            cc.log("share canceled")
+            showText("share canceled")
         end
     end)
 
