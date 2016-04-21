@@ -2,7 +2,7 @@
 #include "PluginFacebook/PluginFacebook.h"
 #include "tolua_fix.h"
 #include "SDKBoxLuaHelper.h"
-#include "sdkbox/sdkbox.h"
+#include "sdkbox/Sdkbox.h"
 
 
 
@@ -176,6 +176,42 @@ int lua_PluginFacebookLua_PluginFacebook_init(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_PluginFacebookLua_PluginFacebook_setAppURLSchemeSuffix(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"sdkbox.PluginFacebook",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "sdkbox.PluginFacebook:setAppURLSchemeSuffix");
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_PluginFacebookLua_PluginFacebook_setAppURLSchemeSuffix'", nullptr);
+            return 0;
+        }
+        sdkbox::PluginFacebook::setAppURLSchemeSuffix(arg0);
+        lua_settop(tolua_S, 1);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "sdkbox.PluginFacebook:setAppURLSchemeSuffix",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_PluginFacebookLua_PluginFacebook_setAppURLSchemeSuffix'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_PluginFacebookLua_PluginFacebook_logout(lua_State* tolua_S)
 {
     int argc = 0;
@@ -279,6 +315,42 @@ int lua_PluginFacebookLua_PluginFacebook_requestReadPermissions(lua_State* tolua
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_PluginFacebookLua_PluginFacebook_requestReadPermissions'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_PluginFacebookLua_PluginFacebook_setAppId(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"sdkbox.PluginFacebook",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "sdkbox.PluginFacebook:setAppId");
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_PluginFacebookLua_PluginFacebook_setAppId'", nullptr);
+            return 0;
+        }
+        sdkbox::PluginFacebook::setAppId(arg0);
+        lua_settop(tolua_S, 1);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "sdkbox.PluginFacebook:setAppId",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_PluginFacebookLua_PluginFacebook_setAppId'.",&tolua_err);
 #endif
     return 0;
 }
@@ -450,9 +522,11 @@ int lua_register_PluginFacebookLua_PluginFacebook(lua_State* tolua_S)
         tolua_function(tolua_S,"isLoggedIn", lua_PluginFacebookLua_PluginFacebook_isLoggedIn);
         tolua_function(tolua_S,"getUserID", lua_PluginFacebookLua_PluginFacebook_getUserID);
         tolua_function(tolua_S,"init", lua_PluginFacebookLua_PluginFacebook_init);
+        tolua_function(tolua_S,"setAppURLSchemeSuffix", lua_PluginFacebookLua_PluginFacebook_setAppURLSchemeSuffix);
         tolua_function(tolua_S,"logout", lua_PluginFacebookLua_PluginFacebook_logout);
         tolua_function(tolua_S,"requestPublishPermissions", lua_PluginFacebookLua_PluginFacebook_requestPublishPermissions);
         tolua_function(tolua_S,"requestReadPermissions", lua_PluginFacebookLua_PluginFacebook_requestReadPermissions);
+        tolua_function(tolua_S,"setAppId", lua_PluginFacebookLua_PluginFacebook_setAppId);
         tolua_function(tolua_S,"fetchFriends", lua_PluginFacebookLua_PluginFacebook_fetchFriends);
         tolua_function(tolua_S,"login", lua_PluginFacebookLua_PluginFacebook_login);
         tolua_function(tolua_S,"inviteFriends", lua_PluginFacebookLua_PluginFacebook_inviteFriends);
