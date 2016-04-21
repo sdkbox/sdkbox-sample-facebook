@@ -1,6 +1,6 @@
 /****************************************************************************
 
- Copyright (c) 2014-2015 Chukong Technologies
+ Copyright (c) 2014-2016 SDKBOX Inc
 
  ****************************************************************************/
 #ifndef _PLUGIN_FACKBOOK_H_
@@ -369,6 +369,15 @@ namespace sdkbox
          */
         static void inviteFriends( const std::string& app_link_url, const std::string& preview_image_url );
 
+        /**
+         * Set the Facebook App ID to be used by the FB SDK.
+         */
+        static void setAppId(const std::string& appId);
+
+        /**
+         * Set the app url scheme suffix used by the FB SDK.
+         */
+        static void setAppURLSchemeSuffix(const std::string& appURLSchemeSuffix);
     };
 }
 

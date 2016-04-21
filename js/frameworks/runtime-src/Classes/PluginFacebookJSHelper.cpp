@@ -4,6 +4,8 @@
 #include "SDKBoxJSHelper.h"
 #include "PluginFacebook/PluginFacebook.h"
 
+using namespace sdkbox;
+
 static const std::string FBGraphUser_ID          ("uid");
 static const std::string FBGraphUser_NAME        ("name");
 static const std::string FBGraphUser_FIRST_NAME  ("firstName");
@@ -11,111 +13,6 @@ static const std::string FBGraphUser_LAST_NAME   ("lastName");
 static const std::string FBGraphUser_INSTALLED   ("isInstalled");
 
 static JSContext* s_cx = nullptr;
-
-////////////////////////////////////////////////////////////////////////////////
-///                     SPIDER MONKEY UTILITIES  - START                     ///
-////////////////////////////////////////////////////////////////////////////////
-
-#if defined(MOZJS_MAJOR_VERSION)
-    #if MOZJS_MAJOR_VERSION >= 33
-        typedef JSObject JSOBJECT;
-        JSOBJECT* JS_NEW_OBJECT( JSContext* cx ) {
-            JS::RootedObject jsobj(cx);
-            jsobj.set( JS_NewObject(cx, NULL, JS::NullPtr(), JS::NullPtr() ) );
-            return jsobj;
-        }
-
-        #define JS_SET_PROPERTY(cx, jsobj, prop, pr) JS_SetProperty( cx, JS::RootedObject(cx,jsobj), prop, JS::RootedValue(cx,pr) )
-
-    #else
-
-        typedef JSObject JSOBJECT;
-        JSOBJECT* JS_NEW_OBJECT( JSContext* cs ) {
-            return JS_NewObject(cx, NULL, NULL, NULL);
-        }
-
-        #define JS_SET_PROPERTY(cx, jsobj, prop, pr) JS_SetProperty( cx, jsobj, prop, pr )
-
-    #endif
-
-    #define JS_INIT_CONTEXT_FOR_UPDATE(cx)                                          \
-        JS::RootedObject obj(cx, ScriptingCore::getInstance()->getGlobalObject());  \
-        JSAutoCompartment ac(cx, obj);
-
-    typedef JS::RootedValue     JSPROPERTY_VALUE;
-    typedef JS::RootedString    JSPROPERTY_STRING;
-    typedef JS::RootedObject    JSPROPERTY_OBJECT;
-
-    template<typename T>
-    bool JS_ARRAY_SET(JSContext* cx, JSOBJECT* array, uint32_t index, T pr) {
-        return JS_SetElement(cx, JS::RootedObject(cx,array), index, pr);
-    }
-
-    bool JS_ARRAY_SET(JSContext* cx, JSOBJECT* array, uint32_t index, JSOBJECT* v) {
-        JSPROPERTY_VALUE pr(cx);
-        pr = OBJECT_TO_JSVAL(v);
-        return JS_SetElement(cx, JS::RootedObject(cx,array), index, pr );
-    }
-
-#elif defined(JS_VERSION)
-    typedef JSObject JSOBJECT;
-    typedef jsval JSPROPERTY;
-
-    typedef JS::RootedValue     jsval;
-    typedef JS::RootedString    jsval;
-    typedef JS::RootedObject    jsval;
-
-    #define JS_SET_PROPERTY(cx, jsobj, prop, pr) JS_SetProperty( cx, jsobj, prop, &pr )
-    #define JS_INIT_CONTEXT_FOR_UPDATE(cx) 
-
-    template<typename T>
-    bool JS_ARRAY_SET(JSContext* cx, JSObject* array, uint32_t index, T pr) {
-        return JS_SetElement(cx, array, index, &pr);
-    }
-
-    JSOBJECT* JS_NEW_OBJECT( JSContext* cs ) {
-        return JS_NewObject(cx, NULL, NULL, NULL);
-    }
-#endif
-
-
-JSOBJECT* JS_NEW_ARRAY( JSContext* cx, uint32_t size ) {
-    return JS_NewArrayObject(cx, 0);
-}
-
-JSOBJECT* JS_NEW_ARRAY( JSContext* cx ) {
-    return JS_NEW_ARRAY(cx,0);
-}
-
-void addProperty( JSContext* cx, JSOBJECT* jsobj, const char* prop, const std::string& value ) {
-    JSPROPERTY_VALUE pr(cx);
-    pr = std_string_to_jsval(cx, value.c_str());
-    JS_SET_PROPERTY(cx, jsobj, prop, pr);
-}
-void addProperty( JSContext* cx, JSOBJECT* jsobj, const char* prop, const char* value ) {
-    JSPROPERTY_VALUE pr(cx);
-    pr = std_string_to_jsval(cx, value);
-    JS_SET_PROPERTY(cx, jsobj, prop, pr);
-}
-void addProperty( JSContext* cx, JSOBJECT* jsobj, const char* prop, bool value ) {
-    JSPROPERTY_VALUE pr(cx);
-    pr = BOOLEAN_TO_JSVAL(value);
-    JS_SET_PROPERTY(cx, jsobj, prop, pr);
-}
-void addProperty( JSContext* cx, JSOBJECT* jsobj, const char* prop, int value ) {
-    JSPROPERTY_VALUE pr(cx);
-    pr = INT_TO_JSVAL(value);
-    JS_SET_PROPERTY(cx, jsobj, prop, pr);
-}
-void addProperty( JSContext* cx, JSOBJECT* jsobj, const char* prop, JSOBJECT* value ) {
-    JSPROPERTY_VALUE pr(cx);
-    pr = OBJECT_TO_JSVAL(value);
-    JS_SET_PROPERTY(cx, jsobj, prop, pr );
-}
-
-////////////////////////////////////////////////////////////////////////////////
-///                      SPIDER MONKEY UTILITIES  - END                      ///
-////////////////////////////////////////////////////////////////////////////////
 
 
 JSOBJECT* FBGraphUserToJS(JSContext* cx, const sdkbox::FBGraphUser& info) {

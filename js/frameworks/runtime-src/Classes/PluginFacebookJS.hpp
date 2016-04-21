@@ -39,9 +39,19 @@ bool js_PluginFacebookJS_PluginFacebook_init(JSContext *cx, uint32_t argc, jsval
 JSBool js_PluginFacebookJS_PluginFacebook_init(JSContext *cx, uint32_t argc, jsval *vp);
 #endif
 #if defined(MOZJS_MAJOR_VERSION)
+bool js_PluginFacebookJS_PluginFacebook_setAppURLSchemeSuffix(JSContext *cx, uint32_t argc, jsval *vp);
+#elif defined(JS_VERSION)
+JSBool js_PluginFacebookJS_PluginFacebook_setAppURLSchemeSuffix(JSContext *cx, uint32_t argc, jsval *vp);
+#endif
+#if defined(MOZJS_MAJOR_VERSION)
 bool js_PluginFacebookJS_PluginFacebook_logout(JSContext *cx, uint32_t argc, jsval *vp);
 #elif defined(JS_VERSION)
 JSBool js_PluginFacebookJS_PluginFacebook_logout(JSContext *cx, uint32_t argc, jsval *vp);
+#endif
+#if defined(MOZJS_MAJOR_VERSION)
+bool js_PluginFacebookJS_PluginFacebook_setAppId(JSContext *cx, uint32_t argc, jsval *vp);
+#elif defined(JS_VERSION)
+JSBool js_PluginFacebookJS_PluginFacebook_setAppId(JSContext *cx, uint32_t argc, jsval *vp);
 #endif
 #if defined(MOZJS_MAJOR_VERSION)
 bool js_PluginFacebookJS_PluginFacebook_fetchFriends(JSContext *cx, uint32_t argc, jsval *vp);

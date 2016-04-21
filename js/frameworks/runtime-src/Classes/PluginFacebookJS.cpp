@@ -2,7 +2,7 @@
 #include "cocos2d_specifics.hpp"
 #include "PluginFacebook/PluginFacebook.h"
 #include "SDKBoxJSHelper.h"
-#include "sdkbox/sdkbox.h"
+#include "sdkbox/Sdkbox.h"
 
 
 #if defined(MOZJS_MAJOR_VERSION)
@@ -219,6 +219,39 @@ JSBool js_PluginFacebookJS_PluginFacebook_init(JSContext *cx, uint32_t argc, jsv
 }
 #endif
 #if defined(MOZJS_MAJOR_VERSION)
+bool js_PluginFacebookJS_PluginFacebook_setAppURLSchemeSuffix(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 1) {
+        std::string arg0;
+        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_PluginFacebookJS_PluginFacebook_setAppURLSchemeSuffix : Error processing arguments");
+        sdkbox::PluginFacebook::setAppURLSchemeSuffix(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_setAppURLSchemeSuffix : wrong number of arguments");
+    return false;
+}
+#elif defined(JS_VERSION)
+JSBool js_PluginFacebookJS_PluginFacebook_setAppURLSchemeSuffix(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    jsval *argv = JS_ARGV(cx, vp);
+    JSBool ok = JS_TRUE;
+    if (argc == 1) {
+        std::string arg0;
+        ok &= jsval_to_std_string(cx, argv[0], &arg0);
+        JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+        sdkbox::PluginFacebook::setAppURLSchemeSuffix(arg0);
+        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        return JS_TRUE;
+    }
+    JS_ReportError(cx, "wrong number of arguments");
+    return JS_FALSE;
+}
+#endif
+#if defined(MOZJS_MAJOR_VERSION)
 bool js_PluginFacebookJS_PluginFacebook_logout(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -235,6 +268,39 @@ JSBool js_PluginFacebookJS_PluginFacebook_logout(JSContext *cx, uint32_t argc, j
 {
     if (argc == 0) {
         sdkbox::PluginFacebook::logout();
+        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        return JS_TRUE;
+    }
+    JS_ReportError(cx, "wrong number of arguments");
+    return JS_FALSE;
+}
+#endif
+#if defined(MOZJS_MAJOR_VERSION)
+bool js_PluginFacebookJS_PluginFacebook_setAppId(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 1) {
+        std::string arg0;
+        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_PluginFacebookJS_PluginFacebook_setAppId : Error processing arguments");
+        sdkbox::PluginFacebook::setAppId(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_setAppId : wrong number of arguments");
+    return false;
+}
+#elif defined(JS_VERSION)
+JSBool js_PluginFacebookJS_PluginFacebook_setAppId(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    jsval *argv = JS_ARGV(cx, vp);
+    JSBool ok = JS_TRUE;
+    if (argc == 1) {
+        std::string arg0;
+        ok &= jsval_to_std_string(cx, argv[0], &arg0);
+        JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+        sdkbox::PluginFacebook::setAppId(arg0);
         JS_SET_RVAL(cx, vp, JSVAL_VOID);
         return JS_TRUE;
     }
@@ -373,7 +439,9 @@ void js_register_PluginFacebookJS_PluginFacebook(JSContext *cx, JS::HandleObject
         JS_FN("isLoggedIn", js_PluginFacebookJS_PluginFacebook_isLoggedIn, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("getUserID", js_PluginFacebookJS_PluginFacebook_getUserID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("init", js_PluginFacebookJS_PluginFacebook_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("setAppURLSchemeSuffix", js_PluginFacebookJS_PluginFacebook_setAppURLSchemeSuffix, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("logout", js_PluginFacebookJS_PluginFacebook_logout, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("setAppId", js_PluginFacebookJS_PluginFacebook_setAppId, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("fetchFriends", js_PluginFacebookJS_PluginFacebook_fetchFriends, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("login", js_PluginFacebookJS_PluginFacebook_login, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("getAccessToken", js_PluginFacebookJS_PluginFacebook_getAccessToken, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -440,7 +508,9 @@ void js_register_PluginFacebookJS_PluginFacebook(JSContext *cx, JSObject *global
         JS_FN("isLoggedIn", js_PluginFacebookJS_PluginFacebook_isLoggedIn, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("getUserID", js_PluginFacebookJS_PluginFacebook_getUserID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("init", js_PluginFacebookJS_PluginFacebook_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("setAppURLSchemeSuffix", js_PluginFacebookJS_PluginFacebook_setAppURLSchemeSuffix, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("logout", js_PluginFacebookJS_PluginFacebook_logout, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("setAppId", js_PluginFacebookJS_PluginFacebook_setAppId, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("fetchFriends", js_PluginFacebookJS_PluginFacebook_fetchFriends, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("login", js_PluginFacebookJS_PluginFacebook_login, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("getAccessToken", js_PluginFacebookJS_PluginFacebook_getAccessToken, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -498,7 +568,9 @@ void js_register_PluginFacebookJS_PluginFacebook(JSContext *cx, JSObject *global
         JS_FN("isLoggedIn", js_PluginFacebookJS_PluginFacebook_isLoggedIn, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("getUserID", js_PluginFacebookJS_PluginFacebook_getUserID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("init", js_PluginFacebookJS_PluginFacebook_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("setAppURLSchemeSuffix", js_PluginFacebookJS_PluginFacebook_setAppURLSchemeSuffix, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("logout", js_PluginFacebookJS_PluginFacebook_logout, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("setAppId", js_PluginFacebookJS_PluginFacebook_setAppId, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("fetchFriends", js_PluginFacebookJS_PluginFacebook_fetchFriends, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("login", js_PluginFacebookJS_PluginFacebook_login, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("getAccessToken", js_PluginFacebookJS_PluginFacebook_getAccessToken, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

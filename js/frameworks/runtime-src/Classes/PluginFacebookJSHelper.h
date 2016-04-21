@@ -13,4 +13,4 @@ void register_all_PluginFacebookJS_helper(JSContext* cx, JSObject* global);
 #endif
 
 
-#endif /* defined(__PLUGIN_VUNGLEJS_HELPER_H__) */
+#endif
