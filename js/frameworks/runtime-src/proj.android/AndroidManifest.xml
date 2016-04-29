@@ -14,6 +14,7 @@
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
         <provider android:authorities="com.facebook.app.FacebookContentProvider367526846750972" android:exported="true" android:name="com.facebook.FacebookContentProvider" />
         <provider android:authorities="com.facebook.app.FacebookContentProvider_replace_with_your_app_id_" android:exported="true" android:name="com.facebook.FacebookContentProvider" />
+        <provider android:authorities="com.facebook.app.FacebookContentProvider_replace_with_your_app_id_" android:exported="true" android:name="com.facebook.FacebookContentProvider" />
     </application>
     <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true" />
     <uses-permission android:name="android.permission.INTERNET" />
