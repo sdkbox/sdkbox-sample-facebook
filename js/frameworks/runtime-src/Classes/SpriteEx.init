@@ -7,11 +7,6 @@ prefix = SpriteExJS
 # all classes will be embedded in that namespace
 target_namespace = sdkbox
 
-androidndkdir = /Users/jryin/Documents/SDK/android/android-ndk-r10d
-clangllvmdir = /Users/jryin/Documents/SDK/android/android-ndk-r10d/toolchains/llvm-3.4/prebuilt/darwin-x86_64
-cxxgeneratordir = /Users/jryin/workspace/sdkbox/sdkbox-core/tools/scripting/bindings-generator
-cocosdir = /Applications/Cocos/frameworks/cocos2d-x-3.8.1/
-
 android_headers = -I%(androidndkdir)s/platforms/android-14/arch-arm/usr/include -I%(androidndkdir)s/sources/cxx-stl/gnu-libstdc++/4.7/libs/armeabi-v7a/include -I%(androidndkdir)s/sources/cxx-stl/gnu-libstdc++/4.7/include -I%(androidndkdir)s/sources/cxx-stl/gnu-libstdc++/4.8/libs/armeabi-v7a/include -I%(androidndkdir)s/sources/cxx-stl/gnu-libstdc++/4.8/include
 android_flags = -D_SIZE_T_DEFINED_
 
