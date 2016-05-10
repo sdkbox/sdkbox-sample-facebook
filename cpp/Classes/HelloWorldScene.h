@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "PluginFacebook/PluginFacebook.h"
 
+class SpriteEx;
 class HelloWorld : public cocos2d::Layer, sdkbox::FacebookListener
 {
 public:
@@ -49,6 +50,7 @@ private:
 
     std::string _captureFilename;
     cocos2d::MenuItemLabel* _loginItem;
+    SpriteEx* _iconSprite;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

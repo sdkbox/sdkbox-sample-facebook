@@ -2,8 +2,64 @@
 #include "HelloWorldScene.h"
 #include "PluginFacebook/PluginFacebook.h"
 
+#include "picojson.h"
+#include "network/HttpRequest.h"
+#include "network/HttpClient.h"
+
 USING_NS_CC;
 using namespace sdkbox;
+
+class SpriteEx : public Sprite
+{
+public:
+    static SpriteEx* createWithUrl(const std::string& url) {
+        SpriteEx* sprite = new SpriteEx();
+        sprite->autorelease();
+        sprite->init();
+        sprite->updateWithUrl(url);
+        return sprite;
+    }
+    static SpriteEx* create() {
+        SpriteEx* sprite = new SpriteEx();
+        sprite->autorelease();
+        sprite->init();
+        return sprite;
+    }
+
+    void updateWithUrl(const std::string& url) {
+        network::HttpRequest* request = new network::HttpRequest();
+        request->setUrl(url.data());
+        request->setRequestType(network::HttpRequest::Type::GET);
+        request->setResponseCallback([=](network::HttpClient* client, network::HttpResponse* response) {
+            CCLOG("success=%s", response->isSucceed() ? "yes":"no");
+
+            std::vector<char> *buffer = response->getResponseData();
+            Image img;
+            img.initWithImageData(reinterpret_cast<unsigned char*>(&(buffer->front())), buffer->size());
+
+            if (0)
+            {
+                // save image file to device.
+                std::string path = FileUtils::getInstance()->getWritablePath()+"p.png";
+                CCLOG("save image path = %s", path.data());
+                bool ret = img.saveToFile(path);
+                CCLOG("save file %s", ret ? "success" : "failure");
+
+                this->initWithFile(path);
+            } else {
+
+                // create sprite with texture
+                Texture2D *texture = new Texture2D();
+                texture->autorelease();
+                texture->initWithImage(&img);
+
+                this->initWithTexture(texture);
+            }
+        });
+        network::HttpClient::getInstance()->send(request);
+        request->release();
+    }
+};
 
 static void checkFaceBookStatus()
 {
@@ -62,6 +118,10 @@ bool HelloWorld::init()
     menu->setPosition(Vec2(winsize.width - labelSize.width / 2 - 16,
                            labelSize.height / 2 + 16));
     addChild(menu);
+
+    _iconSprite = SpriteEx::create();
+    _iconSprite->setPosition(winsize / 2);
+    addChild(_iconSprite);
     
     // add test menu
     createTestMenu();
@@ -153,7 +213,8 @@ void HelloWorld::onGetMyInfo(cocos2d::Ref* sender)
 void HelloWorld::onGetMyFriends(cocos2d::Ref* sender)
 {
     CCLOG("##FB %s", __FUNCTION__);
-    //    PluginFacebook::fetchFriends();
+
+    sdkbox::PluginFacebook::fetchFriends();
 }
 
 void HelloWorld::onCaptureScreen(cocos2d::Ref *sender)
@@ -277,6 +338,14 @@ void HelloWorld::onLogin(bool isLogin, const std::string& error)
 void HelloWorld::onAPI(const std::string& tag, const std::string& jsonData)
 {
     CCLOG("##FB onAPI: tag -> %s, json -> %s", tag.c_str(), jsonData.c_str());
+    if (tag == "__fetch_picture_tag__") {
+        picojson::value v;
+        picojson::parse(v, jsonData);
+        std::string url = v.get("data").get("url").to_str();
+        CCLOG("picture's url = %s", url.data());
+
+        _iconSprite->updateWithUrl(url);
+    }
 }
 
 void HelloWorld::onSharedSuccess(const std::string& message)
@@ -312,7 +381,12 @@ void HelloWorld::onPermission(bool isLogin, const std::string& error)
 void HelloWorld::onFetchFriends(bool ok, const std::string& msg)
 {
     CCLOG("##FB %s: %d = %s", __FUNCTION__, ok, msg.data());
-    
+
+    MenuItemFont::setFontSize(20);
+    static Menu *menu = Menu::create();
+    menu->setPositionY(20);
+    menu->cleanup();
+
     const std::vector<sdkbox::FBGraphUser>& friends = PluginFacebook::getFriends();
     for (int i = 0; i < friends.size(); i++)
     {
@@ -324,8 +398,21 @@ void HelloWorld::onFetchFriends(bool ok, const std::string& msg)
         CCLOG("##FB>> %s", user.name.data());
         CCLOG("##FB>> %s", user.isInstalled ? "app is installed" : "app is not installed");
         CCLOG("##FB");
+
+        MenuItemFont *item = MenuItemFont::create(user.name, [=](Ref*) {
+            sdkbox::FBAPIParam params;
+            params["redirect"] = "false";
+            params["type"] = "small";
+            std::string url(user.uid + "/picture");
+            PluginFacebook::api(url, "GET", params, "__fetch_picture_tag__");
+        });
+        menu->addChild(item);
     }
-    
+    if (!menu->getParent()) {
+        menu->alignItemsHorizontally();
+        addChild(menu);
+    }
+
     MessageBox("", "fetch friends");
 }
 
