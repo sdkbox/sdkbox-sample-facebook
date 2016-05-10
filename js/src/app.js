@@ -53,6 +53,14 @@ var HelloWorldLayer = cc.Layer.extend({
         }
         self.showText = showText;
 
+        self.menu = new cc.Menu();
+        self.menu.y = 20
+        self.addChild(self.menu)
+
+        self.iconSprite = sdkbox.SpriteEx.create()
+        self.iconSprite.setPosition(size.width / 2, size.height / 2);
+        self.addChild(self.iconSprite);
+
         sdkbox.PluginFacebook.init();
         sdkbox.PluginFacebook.setListener({
             onLogin: function(isLogin, msg) {
@@ -68,6 +76,21 @@ var HelloWorldLayer = cc.Layer.extend({
               cc.log("============");
               cc.log(tag);
               cc.log(data);
+              if (tag == "me") {
+                var obj = JSON.parse(data);
+                self.showText(obj.name + " || " + obj.email);
+              } else if (tag == "/me/friendlists") {
+                var obj = JSON.parse(data);
+                var friends = obj.data;
+                for (var i = 0; i < friends.length; i++) {
+                  cc.log("id %s", friends[i].id);
+                }
+              } else if (tag == "__fetch_picture_tag__") {
+                var obj = JSON.parse(data);
+                var url = obj.data.url;
+                cc.log("get friend's profile picture=%s", url);
+                self.iconSprite.updateWithUrl(url);
+              }
             },
             onSharedSuccess: function(data) {
               self.showText("share successful");
@@ -85,6 +108,40 @@ var HelloWorldLayer = cc.Layer.extend({
               else {
                 self.showText("request permission failed");
               }
+            },
+            onFetchFriends: function(ok, msg) {
+              self.showText(ok + ":"+msg, "onFetchFriends");
+
+              self.menu.cleanup();
+              var friends = sdkbox.PluginFacebook.getFriends();
+              for (var i = 0; i < friends.length; i++) {
+                var friend = friends[i];
+                cc.log("-----------");
+                cc.log(">> uid=%s", friend.uid);
+                cc.log(">> name=%s", friend.name);
+                cc.log(">> first name=%s", friend.firstName);
+                cc.log(">> last name=%s", friend.lastName);
+                cc.log(">> is installed=%s", friend.isInstalled);
+
+                var foo = ( function() {
+                    var uid = friend.uid;
+                    return {
+                        onClick: function () {
+                            var params = new Object();
+                            params.redirect = "false";
+                            params.type = "small";
+                            sdkbox.PluginFacebook.api(uid+"/picture", "GET", params, "__fetch_picture_tag__");
+                        }
+                    };
+                } () );
+
+                // create menu
+                var label = cc.Label.createWithSystemFont(friend.name, "sans", 20);
+                var item = new cc.MenuItemLabel(label, foo.onClick);
+                self.menu.addChild(item);
+              }
+              self.menu.alignItemsHorizontally();
+
             }
         });
 
@@ -142,7 +199,22 @@ var HelloWorldLayer = cc.Layer.extend({
             "http://www.cocos2d-x.org/attachments/801/cocos2dx_portrait.png");
         }, this);
 
-        var menu = new cc.Menu(btnLogin, btnLogout, btnCheck, btnReadPerm, btnWritePerm, btnShareLink, btnDialogLink, btnInvite);
+        var btnMyInfo = new cc.MenuItemFont("My Info", function () {
+          var params = new Object();
+          params.fields = "name,email";
+          sdkbox.PluginFacebook.api("me", "GET", params, "me");
+        });
+
+        var btnFetchFriends = new cc.MenuItemFont("Fetch friends", function () {
+         cc.log("friends info");
+//          var params = new Object();
+//          params.fields = "id,name";
+//          sdkbox.PluginFacebook.api("/me/friendlists", "GET", params, "/me/friendlists");
+          sdkbox.PluginFacebook.fetchFriends();
+        });
+
+        var menu = new cc.Menu(btnLogin, btnLogout, btnCheck, btnReadPerm, btnWritePerm, btnShareLink,
+                               btnDialogLink, btnInvite, btnMyInfo, btnFetchFriends);
         var winsize = cc.winSize;
         menu.x = winsize.width/2;
         menu.y = winsize.height/2;

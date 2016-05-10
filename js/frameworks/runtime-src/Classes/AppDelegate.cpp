@@ -16,6 +16,8 @@
 #include "PluginFacebookJSHelper.h"
 #endif
 
+#include "SpriteExJS.hpp"
+
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -78,6 +80,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(register_all_PluginFacebookJS);
     sc->addRegisterCallback(register_all_PluginFacebookJS_helper);
 #endif
+    sc->addRegisterCallback(register_all_SpriteExJS);
     sc->start();
     sc->runScript("script/jsb_boot.js");
 #if defined(COCOS2D_DEBUG) && (COCOS2D_DEBUG > 0)
