@@ -8,7 +8,7 @@ LOCAL_MODULE_FILENAME := libcocos2djs
 
 LOCAL_ARM_MODE := arm
 
-LOCAL_SRC_FILES := ../../Classes/AppDelegate.cpp ../../Classes/ide-support/SimpleConfigParser.cpp ../../Classes/ide-support/RuntimeJsImpl.cpp hellojavascript/main.cpp ../../Classes/PluginFacebookJS.cpp ../../Classes/PluginFacebookJS.hpp ../../Classes/PluginFacebookJSHelper.cpp ../../Classes/PluginFacebookJSHelper.h ../../Classes/SDKBoxJSHelper.cpp ../../Classes/SDKBoxJSHelper.h
+LOCAL_SRC_FILES := ../../Classes/AppDelegate.cpp ../../Classes/ide-support/SimpleConfigParser.cpp ../../Classes/ide-support/RuntimeJsImpl.cpp hellojavascript/main.cpp ../../Classes/PluginFacebookJS.cpp ../../Classes/PluginFacebookJS.hpp ../../Classes/PluginFacebookJSHelper.cpp ../../Classes/PluginFacebookJSHelper.h ../../Classes/SDKBoxJSHelper.cpp ../../Classes/SDKBoxJSHelper.h ../../Classes/SpriteEx.cpp ../../Classes/SpriteExJS.cpp
 
 LOCAL_CPPFLAGS := -DSDKBOX_ENABLED
 LOCAL_LDLIBS := -landroid -llog

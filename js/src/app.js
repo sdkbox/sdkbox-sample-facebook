@@ -46,9 +46,8 @@ var HelloWorldLayer = cc.Layer.extend({
         coinsLabel.setPosition(size.width/2, 80);
         self.addChild(coinsLabel);
         self.coinsLabel = coinsLabel;
-        printf = cc.log;
         var showText = function(msg) {
-          printf(msg);
+          cc.log(msg);
           self.coinsLabel.setString(msg);
         }
         self.showText = showText;
@@ -74,8 +73,8 @@ var HelloWorldLayer = cc.Layer.extend({
             },
             onAPI: function(tag, data) {
               cc.log("============");
-              cc.log(tag);
-              cc.log(data);
+              cc.log("tag=%s", tag);
+              cc.log("data=%s", data);
               if (tag == "me") {
                 var obj = JSON.parse(data);
                 self.showText(obj.name + " || " + obj.email);
@@ -112,6 +111,7 @@ var HelloWorldLayer = cc.Layer.extend({
             onFetchFriends: function(ok, msg) {
               self.showText(ok + ":"+msg, "onFetchFriends");
 
+              self.menu.removeAllChildren();
               self.menu.cleanup();
               var friends = sdkbox.PluginFacebook.getFriends();
               for (var i = 0; i < friends.length; i++) {
@@ -139,6 +139,10 @@ var HelloWorldLayer = cc.Layer.extend({
                 var label = cc.Label.createWithSystemFont(friend.name, "sans", 20);
                 var item = new cc.MenuItemLabel(label, foo.onClick);
                 self.menu.addChild(item);
+
+                if (friends.length <= 0) {
+                  self.showText("You don't have any friend on this app", "onFetchFriends");
+                }
               }
               self.menu.alignItemsHorizontally();
 

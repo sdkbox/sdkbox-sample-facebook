@@ -1,4 +1,5 @@
 #include "SpriteEx.h"
+#define PICOJSON_USE_LOCALE 0
 #include "picojson.h"
 #include "network/HttpRequest.h"
 #include "network/HttpClient.h"
