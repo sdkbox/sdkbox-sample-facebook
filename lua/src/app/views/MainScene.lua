@@ -127,7 +127,8 @@ function MainScene:setupTestMenu()
 
     local btnInvite = cc.MenuItemFont:create("Invite"):onClicked(function ()
         sdkbox.PluginFacebook:inviteFriends(
-            "https://fb.me/322164761287181",
+            -- "https://fb.me/322164761287181",
+            "https://fb.me/402104823293174",
             "http://www.cocos2d-x.org/attachments/801/cocos2dx_portrait.png")
     end)
 

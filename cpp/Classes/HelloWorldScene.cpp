@@ -315,7 +315,9 @@ void HelloWorld::onRequestPublishPermission(cocos2d::Ref *sender)
 
 void HelloWorld::onInviteFriends(cocos2d::Ref* sender )
 {
-    PluginFacebook::inviteFriends("https://fb.me/322164761287181",
+    PluginFacebook::inviteFriends(
+            //"https://fb.me/322164761287181",
+            "https://fb.me/402104549959868",
                                   "http://www.cocos2d-x.org/attachments/802/cocos2dx_landscape.png");
 }
 

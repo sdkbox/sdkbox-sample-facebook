@@ -199,7 +199,8 @@ var HelloWorldLayer = cc.Layer.extend({
 
         var btnInvite = new cc.MenuItemFont("Invite", function () {
           sdkbox.PluginFacebook.inviteFriends(
-            "https://fb.me/322164761287181",
+            // "https://fb.me/322164761287181",
+            "https://fb.me/402104969959826",
             "http://www.cocos2d-x.org/attachments/801/cocos2dx_portrait.png");
         }, this);
 
