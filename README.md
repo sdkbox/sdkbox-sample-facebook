@@ -45,3 +45,11 @@ has to pass facebook's review but you can out any testing functionality if you c
 1. fbauth2 is missing from your Info.plist under LSApplicationQueriesSchemes and is required for iOS 9.0
 
 https://developers.facebook.com/docs/ios/ios9
+
+
+## About invite friends
+
+1. Rreate "App Links Hosting API" [https://developers.facebook.com/quickstarts/?platform=app-links-host](https://developers.facebook.com/quickstarts/?platform=app-links-host)
+2. Add your test friend to your "Testers" group
+3. "Friend" check the invitation on his/her **Mobile Device (iPhone/Android)**
+
