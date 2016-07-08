@@ -218,8 +218,51 @@ var HelloWorldLayer = cc.Layer.extend({
           sdkbox.PluginFacebook.fetchFriends();
         });
 
+        var self = this;
+        self.captureFilename = jsb.fileUtils.getWritablePath() + "screen.png";
+        var btnCaptureScreen = new cc.MenuItemFont("Capture screen", function(name) {
+          var ss = new cc.RenderTexture( cc.winSize.width, cc.winSize.height );
+
+          ss.begin();
+          self.visit();
+          ss.end();
+
+          ss.saveToFile("screen.png");
+        });
+
+        var btnSharePhoto = new cc.MenuItemFont("Share photo", function() {
+          if (jsb.fileUtils.isFileExist(self.captureFilename) == false) {
+            cc.log("capture screen first");
+          }
+
+          var params = new Object();
+          params.type  = "photo";
+          params.title = "My Photo";
+          params.image = self.captureFilename;
+
+          cc.log("Share photo path = %s", params.image);
+
+          sdkbox.PluginFacebook.share(params);
+        });
+
+        var btnDialogPhoto = new cc.MenuItemFont("Dialog photo", function() {
+          if (jsb.fileUtils.isFileExist(self.captureFilename) == false) {
+            cc.log("capture screen first");
+          }
+
+          var params = new Object();
+          params.type  = "photo";
+          params.title = "My Photo";
+          params.image = self.captureFilename;
+
+          cc.log("Dialog photo path = %s", params.image);
+
+          sdkbox.PluginFacebook.dialog(params);
+        });
+
         var menu = new cc.Menu(btnLogin, btnLogout, btnCheck, btnReadPerm, btnWritePerm, btnShareLink,
-                               btnDialogLink, btnInvite, btnMyInfo, btnFetchFriends);
+                               btnDialogLink, btnInvite, btnMyInfo, btnFetchFriends,
+                               btnCaptureScreen, btnSharePhoto, btnDialogPhoto);
         var winsize = cc.winSize;
         menu.x = winsize.width/2;
         menu.y = winsize.height/2;
