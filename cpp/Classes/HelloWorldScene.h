@@ -2,6 +2,7 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "ui/UICheckBox.h"
 #include "PluginFacebook/PluginFacebook.h"
 
 class SpriteEx;
@@ -29,9 +30,17 @@ public:
     void onRequestReadPermission(cocos2d::Ref* sender);
     void onRequestPublishPermission(cocos2d::Ref* sender);
     void onInviteFriends(cocos2d::Ref* sender);
+    void onInviteFriendsCustomUI(cocos2d::Ref* sender);
 
 private:
     void createTestMenu();
+
+    void showInviteDialog();
+    void createInviteDialog();
+    void showInviteableFriends();
+    void onCheckBoxState(Ref*, cocos2d::ui::CheckBox::EventType);
+    void onButtonCancel(Ref*);
+    void onButtonInvite(Ref*);
 
     //Facebook callback
     void onLogin(bool isLogin, const std::string& msg);
@@ -51,6 +60,12 @@ private:
     std::string _captureFilename;
     cocos2d::MenuItemLabel* _loginItem;
     SpriteEx* _iconSprite;
+    Node* _inviteDialog;
+    std::string _inviteTitle;
+    std::string _inviteText;
+    std::vector<sdkbox::FBGraphUser> _inviteableUsers;
+    std::vector<int> _inviteUserIdxs;
+    cocos2d::EventListenerTouchOneByOne* _touchListener;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
