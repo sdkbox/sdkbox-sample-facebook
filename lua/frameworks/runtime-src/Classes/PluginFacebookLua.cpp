@@ -1,6 +1,5 @@
 #include "PluginFacebookLua.hpp"
 #include "PluginFacebook/PluginFacebook.h"
-#include "tolua_fix.h"
 #include "SDKBoxLuaHelper.h"
 #include "sdkbox/Sdkbox.h"
 
