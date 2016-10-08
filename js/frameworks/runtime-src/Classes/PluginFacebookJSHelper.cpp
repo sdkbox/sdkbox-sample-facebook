@@ -1,6 +1,5 @@
 
 #include "PluginFacebookJSHelper.h"
-#include "cocos2d_specifics.hpp"
 #include "SDKBoxJSHelper.h"
 #include "PluginFacebook/PluginFacebook.h"
 
@@ -16,9 +15,9 @@ static JSContext* s_cx = nullptr;
 
 
 JSOBJECT* FBGraphUserToJS(JSContext* cx, const sdkbox::FBGraphUser& info) {
-    
+
     JS_INIT_CONTEXT_FOR_UPDATE(cx);
-    
+
     JSOBJECT* jsobj= JS_NEW_OBJECT(cx);
 
     for( std::pair<std::string, std::string> _p : info.getFields() ) {
@@ -29,9 +28,9 @@ JSOBJECT* FBGraphUserToJS(JSContext* cx, const sdkbox::FBGraphUser& info) {
 }
 
 JSOBJECT* FBInvitableFriendsInfoToJS( JSContext* cx, const sdkbox::FBInvitableFriendsInfo& ifap ) {
-    
+
     JS_INIT_CONTEXT_FOR_UPDATE(cx);
-    
+
     // collection of FBGraphUser
         JSOBJECT *jarr= JS_NEW_ARRAY(cx, ifap.getNumInvitationTokens());
 
@@ -57,9 +56,12 @@ JSOBJECT* FBInvitableFriendsInfoToJS( JSContext* cx, const sdkbox::FBInvitableFr
     return ret;
 }
 
-class FacebookListenerJsHelper : public sdkbox::FacebookListener
+class FacebookListenerJsHelper : public sdkbox::FacebookListener, public sdkbox::JSListenerBase
 {
-    
+public:
+    FacebookListenerJsHelper():sdkbox::JSListenerBase() {
+    }
+
 private:
     void invokeDelegate(std::string& fName, jsval dataVal[], int argc) {
         if (!s_cx) {
@@ -67,10 +69,10 @@ private:
         }
         JSContext* cx = s_cx;
         const char* func_name = fName.c_str();
-        
-        JS::RootedObject obj(cx, mJsDelegate);
+
+        JS::RootedObject obj(cx, getJSDelegate());
         JSAutoCompartment ac(cx, obj);
-        
+
 #if MOZJS_MAJOR_VERSION >= 31
         bool hasAction;
         JS::RootedValue retval(cx);
@@ -84,7 +86,7 @@ private:
         jsval retval;
         jsval func_handle;
 #endif
-        
+
         if (JS_HasProperty(cx, obj, func_name, &hasAction) && hasAction) {
             if(!JS_GetProperty(cx, obj, func_name, &func_handle)) {
                 return;
@@ -92,7 +94,7 @@ private:
             if(func_handle == JSVAL_VOID) {
                 return;
             }
-            
+
 #if MOZJS_MAJOR_VERSION >= 31
             if (0 == argc) {
                 JS_CallFunctionName(cx, obj, func_name, JS::HandleValueArray::empty(), &retval);
@@ -108,24 +110,8 @@ private:
 #endif
         }
     }
-    
-private:
-    JSObject* mJsDelegate;
-    
-public:
-    void setJSDelegate(JSObject* delegate)
-    {
-        mJsDelegate = delegate;
-    }
 
-    JSObject* getJSDelegate()
-    {
-        return mJsDelegate;
-    }
-    
-    FacebookListenerJsHelper() : mJsDelegate(0)
-    {
-    }
+public:
 
     virtual void onLogin(bool isLogin, const std::string& error)
     {
@@ -266,11 +252,10 @@ JSBool js_PluginFacebookJS_PluginFacebook_setListener(JSContext *cx, unsigned ar
         {
             ok = false;
         }
-        JSObject *tmpObj = args.get(0).toObjectOrNull();
 
         JSB_PRECONDITION2(ok, cx, false, "js_PluginFacebookJS_PluginFacebook_setListener : Error processing arguments");
         FacebookListenerJsHelper* lis = new FacebookListenerJsHelper();
-        lis->setJSDelegate(tmpObj);
+        lis->setJSDelegate(args.get(0));
         sdkbox::PluginFacebook::setListener(lis);
 
         args.rval().setUndefined();
@@ -496,6 +481,21 @@ bool js_PluginFacebookJS_PluginFacebook_getFriends(JSContext *cx, uint32_t argc,
     if (argc == 0) {
         std::vector<sdkbox::FBGraphUser> ret = sdkbox::PluginFacebook::getFriends();
         size_t size = ret.size();
+#if !defined(CCArray) && (COCOS2D_VERSION >= 0x00030000)
+        cocos2d::ValueVector array;
+        for (int i = 0; i < size; i++)
+        {
+            const sdkbox::FBGraphUser& friendInfo = ret.at(i);
+            cocos2d::ValueMap friendInfoDict;
+            friendInfoDict[FBGraphUser_ID] = friendInfo.uid;
+            friendInfoDict[FBGraphUser_NAME] = friendInfo.name;
+            friendInfoDict[FBGraphUser_FIRST_NAME] = friendInfo.firstName;
+            friendInfoDict[FBGraphUser_LAST_NAME] = friendInfo.lastName;
+            friendInfoDict[FBGraphUser_INSTALLED] = friendInfo.isInstalled;
+            array.push_back(cocos2d::Value(friendInfoDict));
+        }
+        jsval jsret = ccvaluevector_to_jsval(cx, array);
+#else
         cocos2d::CCArray *array = cocos2d::CCArray::create();
         array->retain();
         for (int i = 0; i < size; i++)
@@ -512,6 +512,7 @@ bool js_PluginFacebookJS_PluginFacebook_getFriends(JSContext *cx, uint32_t argc,
         }
 
         jsval jsret = ccarray_to_jsval(cx, array);
+#endif // __COCOS2D_CCDEPRECATED_H__
         args.rval().set(jsret);
         return true;
     }
