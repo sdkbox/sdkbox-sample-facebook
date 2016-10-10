@@ -1,7 +1,14 @@
 
-# How to run sdkbox samples
+# Getting Started
 
-Steps:
+##Setup
+
+simply run 
+```bash
+./setup
+```
+
+or perform following steps
 
 ~~~bash
 mkdir samples
@@ -24,9 +31,7 @@ git clone --depth 1 https://github.com/sdkbox/sdkbox-sample-facebook.git
 
 ~~~
 
-Memo:
-
-1.  Sample repo and cocos2dx repo must be in same level directory
+Here is the folder structure should be look like after installation
 
 ~~~
 +-- sdkbox-cocos2d-x-binary
@@ -36,9 +41,8 @@ Memo:
 | \-- js
 ~~~
 
-## Notice
-You have to create your own application in order to try out facebook functionality, because any app with posting functionality
-has to pass facebook's review but you can out any testing functionality if you created your own facebook app
+## Note
+>You have to create your own application and testing accounts in order to try out facebook functionality. because any app with posting functionality has to pass facebook's review and testing accounts is invite only
 
 ## FAQ
 
