@@ -1,4 +1,4 @@
-
+#include <vector>
 #include "HelloWorldScene.h"
 #include "PluginFacebook/PluginFacebook.h"
 
@@ -546,7 +546,11 @@ void HelloWorld::onLoginClick(cocos2d::Ref *sender)
     }
     else
     {
-        PluginFacebook::login();
+        std::vector<std::string> permissions;
+        permissions.push_back(sdkbox::FB_PERM_READ_EMAIL);
+        permissions.push_back(sdkbox::FB_PERM_READ_USER_FRIENDS);
+        PluginFacebook::login(permissions);
+//        PluginFacebook::login();
     }
 }
 
