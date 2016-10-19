@@ -1,8 +1,6 @@
 
 #include "PluginFacebookLuaHelper.h"
 #include "PluginFacebook/PluginFacebook.h"
-#include "CCLuaEngine.h"
-#include "tolua_fix.h"
 #include "SDKBoxLuaHelper.h"
 
 static const std::string FBGraphUser_ID          ("uid");

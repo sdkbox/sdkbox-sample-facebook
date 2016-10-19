@@ -1,4 +1,4 @@
-.*
+*.zip
 contents.xcworkspacedata
 xcuserdata/
 
@@ -10,11 +10,12 @@ cpp/proj.android/assets/
 cpp/proj.android/obj/
 cpp/proj.android/bin/
 cpp/proj.android/gen/
-cpp/proj.android/libs/
+cpp/proj.android/libs/*.jar
 cpp/proj.android/libs/facebook_lib/local.properties
 cpp/proj.android/libs/facebook_lib/proguard-project.txt
 cpp/proj.android/libs/facebook_lib/bin/
 cpp/proj.android/libs/facebook_lib/gen/
+cpp/proj.android/libs/armeabi/
 
 lua/frameworks/runtime-src/proj.ios_mac/build
 lua/frameworks/runtime-src/proj.android/local.properties
@@ -22,13 +23,13 @@ lua/frameworks/runtime-src/proj.android/assets/
 lua/frameworks/runtime-src/proj.android/obj/
 lua/frameworks/runtime-src/proj.android/bin/
 lua/frameworks/runtime-src/proj.android/gen/
-lua/frameworks/runtime-src/proj.android/libs/
+lua/frameworks/runtime-src/proj.android/libs/*.jar
 lua/simulator
 lua/frameworks/runtime-src/proj.android/libs/facebook_lib/bin/
 lua/frameworks/runtime-src/proj.android/libs/facebook_lib/gen/
 lua/frameworks/runtime-src/proj.android/libs/facebook_lib/local.properties
 lua/frameworks/runtime-src/proj.android/libs/facebook_lib/proguard-project.txt
-
+lua/frameworks/runtime-src/proj.android/libs/armeabi/
 
 js/frameworks/runtime-src/proj.ios_mac/build
 js/frameworks/runtime-src/proj.android/local.properties
@@ -36,9 +37,10 @@ js/frameworks/runtime-src/proj.android/assets/
 js/frameworks/runtime-src/proj.android/obj/
 js/frameworks/runtime-src/proj.android/bin/
 js/frameworks/runtime-src/proj.android/gen/
-js/frameworks/runtime-src/proj.android/libs/
+js/frameworks/runtime-src/proj.android/libs/*.jar
 js/simulator
 js/frameworks/runtime-src/proj.android/libs/facebook_lib/bin/
 js/frameworks/runtime-src/proj.android/libs/facebook_lib/gen/
 js/frameworks/runtime-src/proj.android/libs/facebook_lib/local.properties
 js/frameworks/runtime-src/proj.android/libs/facebook_lib/proguard-project.txt
+js/frameworks/runtime-src/proj.android/libs/armeabi/
