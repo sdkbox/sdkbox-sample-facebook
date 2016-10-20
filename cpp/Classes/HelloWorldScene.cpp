@@ -331,7 +331,7 @@ void HelloWorld::createInviteDialog() {
     bgM->setScaleX(scaleX);
     auto pos = bgU->getPosition().y - heightT/2;
     while (true) {
-        if (pos - heigtM < -height/2 + heightB) {
+        if (pos < -height/2 + heightB/2) {
             break;
         }
         auto clone = Sprite::createWithSpriteFrame(bgM->getSpriteFrame());
@@ -788,6 +788,9 @@ void HelloWorld::onRequestInvitableFriends( const FBInvitableFriendsInfo& friend
         CCLOG("Invitable friend: %s", it->getName().c_str());
     }
     CCLOG("Request Inviteable Friends End");
+    if (0 == _inviteableUsers.size()) {
+        CCLOG("WARNING! Your Invitable Friends number is 0");
+    }
     showInviteableFriends();
 }
 
