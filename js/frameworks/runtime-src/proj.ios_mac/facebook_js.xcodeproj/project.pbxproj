@@ -116,6 +116,7 @@
 		9F8217A91CE2203E0006B1BB /* SpriteEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteEx.h; sourceTree = "<group>"; };
 		9F8217AE1CE22DCF0006B1BB /* SpriteExJS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteExJS.cpp; sourceTree = "<group>"; };
 		9F8217AF1CE22DCF0006B1BB /* SpriteExJS.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpriteExJS.hpp; sourceTree = "<group>"; };
+		9FC1B1DC1DE2DF360069DA8C /* facebook_js-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "facebook_js-mobile.entitlements"; sourceTree = "<group>"; };
 		9FFEB99F1A6AB7F70095C43A /* CodeIDESupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeIDESupport.h; sourceTree = "<group>"; };
 		9FFEB9A01A6AB7F70095C43A /* lang */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lang; sourceTree = "<group>"; };
 		9FFEB9A31A6AB7F70095C43A /* RuntimeJsImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RuntimeJsImpl.cpp; sourceTree = "<group>"; };
@@ -232,6 +233,7 @@
 		A92275321517C094001B78AA = {
 			isa = PBXGroup;
 			children = (
+				9FC1B1DC1DE2DF360069DA8C /* facebook_js-mobile.entitlements */,
 				C06D18B718C02D4A003D1A65 /* JS Common */,
 				D4545214156E28EF00887EB5 /* Classes */,
 				A92275401517C094001B78AA /* Frameworks */,
@@ -370,6 +372,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					A922753C1517C094001B78AA = {
+						DevelopmentTeam = LNN652W6T6;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = A92275371517C094001B78AA /* Build configuration list for PBXProject "facebook_js" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -516,8 +528,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = "facebook_js-mobile.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = LNN652W6T6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)\"";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -556,8 +570,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = "facebook_js-mobile.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = LNN652W6T6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
