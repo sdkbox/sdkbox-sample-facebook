@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_button_icon.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_button_icon.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/messenger_bubble_large_blue.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/messenger_bubble_large_blue.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_close.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_close.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/messenger_bubble_small_blue.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/messenger_bubble_small_blue.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_tooltip_blue_xout.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_xout.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_tooltip_black_background.9.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_black_background.9.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/messenger_button_send_round_shadow.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/messenger_button_send_round_shadow.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_tooltip_black_bottomnub.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_black_bottomnub.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/messenger_bubble_small_white.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/messenger_bubble_small_white.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_button_send_icon.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_button_send_icon.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_tooltip_blue_background.9.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_background.9.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_tooltip_blue_topnub.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_topnub.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_tooltip_blue_bottomnub.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_bottomnub.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_tooltip_black_topnub.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_black_topnub.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_tooltip_black_xout.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_black_xout.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/messenger_bubble_large_white.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/messenger_bubble_large_white.png"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/com_facebook_button_like_icon_selected.png",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_button_like_icon_selected.png"
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/layout/messenger_button_send_white_round.xml",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/layout/messenger_button_send_white_round.xml"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/layout/com_facebook_tooltip_bubble.xml",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/layout/com_facebook_tooltip_bubble.xml"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/layout/messenger_button_send_white_small.xml",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/layout/messenger_button_send_white_small.xml"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/layout/com_facebook_login_fragment.xml",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/layout/com_facebook_login_fragment.xml"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/layout/messenger_button_send_blue_small.xml",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/layout/messenger_button_send_blue_small.xml"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/layout/com_facebook_activity_layout.xml",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/layout/com_facebook_activity_layout.xml"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/layout/messenger_button_send_blue_large.xml",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/layout/messenger_button_send_blue_large.xml"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/layout/messenger_button_send_blue_round.xml",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/layout/messenger_button_send_blue_round.xml"
+    },
+    {
+        "merged": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/res/merged/androidTest/debug/layout/messenger_button_send_white_large.xml",
+        "source": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/layout/messenger_button_send_white_large.xml"
+    }
+]

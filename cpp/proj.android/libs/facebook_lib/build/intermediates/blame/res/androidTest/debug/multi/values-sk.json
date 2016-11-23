@@ -1,0 +1,311 @@
+[
+    {
+        "outputFile": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-sk/values-sk.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 122,
+                    "endOffset": 173
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 122,
+                        "endOffset": 173
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 178,
+                    "endColumn": 146,
+                    "endOffset": 320
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 178,
+                        "endColumn": 146,
+                        "endOffset": 320
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 325,
+                    "endColumn": 101,
+                    "endOffset": 422
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 325,
+                        "endColumn": 101,
+                        "endOffset": 422
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 427,
+                    "endColumn": 72,
+                    "endOffset": 495
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 427,
+                        "endColumn": 72,
+                        "endOffset": 495
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 500,
+                    "endColumn": 76,
+                    "endOffset": 572
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 500,
+                        "endColumn": 76,
+                        "endOffset": 572
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 577,
+                    "endColumn": 63,
+                    "endOffset": 636
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 577,
+                        "endColumn": 63,
+                        "endOffset": 636
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 641,
+                    "endColumn": 71,
+                    "endOffset": 708
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 641,
+                        "endColumn": 71,
+                        "endOffset": 708
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 713,
+                    "endColumn": 77,
+                    "endOffset": 786
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 713,
+                        "endColumn": 77,
+                        "endOffset": 786
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 791,
+                    "endColumn": 95,
+                    "endOffset": 882
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 791,
+                        "endColumn": 95,
+                        "endOffset": 882
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 887,
+                    "endColumn": 77,
+                    "endOffset": 960
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 887,
+                        "endColumn": 77,
+                        "endOffset": 960
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 965,
+                    "endColumn": 77,
+                    "endOffset": 1038
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 965,
+                        "endColumn": 77,
+                        "endOffset": 1038
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1043,
+                    "endColumn": 84,
+                    "endOffset": 1123
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1043,
+                        "endColumn": 84,
+                        "endOffset": 1123
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1128,
+                    "endColumn": 99,
+                    "endOffset": 1223
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1128,
+                        "endColumn": 99,
+                        "endOffset": 1223
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1228,
+                    "endColumn": 65,
+                    "endOffset": 1289
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1228,
+                        "endColumn": 65,
+                        "endOffset": 1289
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1294,
+                    "endColumn": 66,
+                    "endOffset": 1356
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1294,
+                        "endColumn": 66,
+                        "endOffset": 1356
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1361,
+                    "endColumn": 144,
+                    "endOffset": 1501
+                },
+                "from": {
+                    "file": "/Volumes/htl-hd/work/sdkbox-core/plugins/facebook/proj.android/libs/facebook_lib/build/intermediates/bundles/debug/res/values-sk/values-sk.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1361,
+                        "endColumn": 144,
+                        "endOffset": 1501
+                    }
+                }
+            }
+        ]
+    }
+]
