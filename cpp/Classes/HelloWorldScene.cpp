@@ -15,6 +15,8 @@
 #define TAG_SCROLLVIEW 2
 #define TAG_CHECKBOX 1000
 
+#define SCREENLOG_IMPLEMENTATION
+#include "ScreenLog.h"
 
 USING_NS_CC;
 using namespace sdkbox;
@@ -165,7 +167,13 @@ bool HelloWorld::init()
 
     PluginFacebook::setListener(this);
     sdkbox::PluginFacebook::init();
+    
 
+    INFO("Facebook logged in ? %s", PluginFacebook::isLoggedIn() ? "yes" : "no");
+    if (!PluginFacebook::isLoggedIn()) {
+        PluginFacebook::login();
+    }
+    
 //    std::string url = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/v/t1.0-1/p320x320/537914_116355241828348_695849812_n.jpg?oh=848e9b8ad6257177ce7eee047405e7ce&oe=5878E7CD&__gda__=1484964719_334d018e76a5b5463849b573c95f90e6";
 //    Sprite* sp = SpriteEx::createWithUrl(url);
 //    sp ->setPosition(100, 100);
@@ -687,7 +695,7 @@ void HelloWorld::onInviteFriendsCustomUI(cocos2d::Ref* sender ) {
  *********************/
 void HelloWorld::onLogin(bool isLogin, const std::string& error)
 {
-    CCLOG("##FB isLogin: %d, error: %s", isLogin, error.c_str());
+    INFO("##FB onLogin: %s, msg: %s", isLogin ? "yes":"no", error.c_str());
     
     if (isLogin)
     {
