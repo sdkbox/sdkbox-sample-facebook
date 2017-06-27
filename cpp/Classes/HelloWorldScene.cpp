@@ -37,13 +37,13 @@ public:
         sprite->init();
         return sprite;
     }
-    
+
     virtual bool init() {
         _image_size.x = 0;
         _image_size.y = 0;
         return Sprite::init();
     }
-    
+
     void setSize(Vec2 s) {
         _image_size = s;
     }
@@ -89,7 +89,7 @@ public:
         network::HttpClient::getInstance()->send(request);
         request->release();
     }
-    
+
 private:
     cocos2d::Vec2 _image_size;
 };
@@ -110,13 +110,13 @@ Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
-    
+
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
-    
+
     // add layer as a child to scene
     scene->addChild(layer);
-    
+
     // return the scene
     return scene;
 }
@@ -130,9 +130,9 @@ bool HelloWorld::init()
     {
         return false;
     }
-    
+
     CCLOG("Sample Startup");
-    
+
     _inviteDialog = nullptr;
     _inviteTitle = "SDKBox Invite";
     _inviteText = "SDKBox (www.sdkbox.com)";
@@ -146,7 +146,7 @@ bool HelloWorld::init()
     logo->setPosition(Vec2(logoSize.width / 2,
                            winsize.height - logoSize.height / 2));
     addChild(logo);
-    
+
     // add quit button
     auto label = Label::createWithSystemFont("QUIT", "sans", 32);
     auto quit = MenuItemLabel::create(label, [](Ref*){
@@ -161,24 +161,24 @@ bool HelloWorld::init()
     _iconSprite = SpriteEx::create();
     _iconSprite->setPosition(winsize / 2);
     addChild(_iconSprite);
-    
+
     // add test menu
     createTestMenu();
 
     PluginFacebook::setListener(this);
     sdkbox::PluginFacebook::init();
-    
+
 
     INFO("Facebook logged in ? %s", PluginFacebook::isLoggedIn() ? "yes" : "no");
     if (!PluginFacebook::isLoggedIn()) {
         PluginFacebook::login();
     }
-    
+
 //    std::string url = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/v/t1.0-1/p320x320/537914_116355241828348_695849812_n.jpg?oh=848e9b8ad6257177ce7eee047405e7ce&oe=5878E7CD&__gda__=1484964719_334d018e76a5b5463849b573c95f90e6";
 //    Sprite* sp = SpriteEx::createWithUrl(url);
 //    sp ->setPosition(100, 100);
 //    addChild(sp);
-    
+
     return true;
 }
 
@@ -201,9 +201,9 @@ void HelloWorld::createTestMenu()
         {
             loginStat = "Login";
         }
-        
+
         _loginItem = MenuItemFont::create(loginStat, CC_CALLBACK_1(HelloWorld::onLoginClick, this));
-        
+
         auto menu = Menu::create(_loginItem,
                                  MenuItemFont::create("check status", CC_CALLBACK_1(HelloWorld::onCheckStatus, this)),
                                  MenuItemFont::create("requestReadPermission", CC_CALLBACK_1(HelloWorld::onRequestReadPermission, this)),
@@ -218,16 +218,16 @@ void HelloWorld::createTestMenu()
                                  MenuItemFont::create("invite friends", CC_CALLBACK_1(HelloWorld::onInviteFriends, this)),
                                  MenuItemFont::create("invite friends (Custom Dialog)", CC_CALLBACK_1(HelloWorld::onInviteFriendsCustomUI, this)),
                                  NULL);
-        
+
         menu->alignItemsVerticallyWithPadding(20);
         menu->setPosition(Vec2(size.width/2, size.height/2));
         menu->setTag(TAG_MENU);
         addChild(menu);
-        
+
         Label *userLabel = Label::createWithSystemFont("user: aydghli_riceberg_1435809241@tfbnw.net", "sans", 32);
         userLabel->setPosition(Vec2(size.width/2, size.height - 30));
         addChild(userLabel);
-        
+
         Label *pwLabel = Label::createWithSystemFont("password: 123456", "sans", 32);
         pwLabel->setPosition(Vec2(size.width/2, size.height - 30*2));
         addChild(pwLabel);
@@ -241,7 +241,7 @@ void HelloWorld::showInviteDialog() {
     } else {
         _inviteDialog->setVisible(true);
     }
-    
+
     FBAPIParam param;
     PluginFacebook::requestInvitableFriends(param);
 
@@ -254,7 +254,7 @@ void HelloWorld::showInviteDialog() {
 
 void HelloWorld::onCheckBoxState(Ref* r, cocos2d::ui::CheckBox::EventType event) {
     auto cb = dynamic_cast<cocos2d::ui::CheckBox*>(r);
-    
+
     int idx = cb->getTag() - TAG_CHECKBOX;
     if (cocos2d::ui::CheckBox::EventType::SELECTED == event) {
         bool bExist = false;
@@ -301,13 +301,13 @@ void HelloWorld::createInviteDialog() {
     int width = 0;
     int height = 0;
     auto winsize = Director::getInstance()->getWinSize();
-    
+
     width = winsize.width * 4 / 5;
     height = winsize.height * 3 / 5;
-    
+
     _inviteDialog = new Node();
     _inviteDialog->setPosition(winsize.width/2, winsize.height/2);
-    
+
     //title bg
     auto sp = Sprite::create("ui/blue_button03.png");
     auto size = sp->getContentSize();
@@ -327,7 +327,7 @@ void HelloWorld::createInviteDialog() {
     bgU->setScaleX(scaleX);
     bgU->setPosition(0, height/2 - heightT/2);
     _inviteDialog->addChild(bgU);
-    
+
     auto bgB = Sprite::create("ui/dropdownBottom.png");
     auto heightB = bgB->getContentSize().height;
     bgB->setScaleX(scaleX);
@@ -348,10 +348,10 @@ void HelloWorld::createInviteDialog() {
         _inviteDialog->addChild(clone);
         pos -= heigtM;
     }
-    
+
     int padding = 10;
     pos = height/2;
-    
+
     // invite title
     pos -= padding * 2; //padding
     label = Label::createWithSystemFont("Title:", "sans", 20);
@@ -359,14 +359,14 @@ void HelloWorld::createInviteDialog() {
     label->setPosition(-width/2 + label->getContentSize().width/2 + padding * 2, pos);
     _inviteDialog->addChild(label);
     pos -= label->getContentSize().height;
-    
+
     pos -= padding;
     label = Label::createWithSystemFont(_inviteTitle, "sans", 20);
     label->setTextColor(Color4B(64, 64, 64, 255));
     label->setPosition(-width/2 + label->getContentSize().width/2 + padding * 2, pos);
     _inviteDialog->addChild(label);
     pos -= label->getContentSize().height;
-    
+
 //    pos -= padding;
 //    sp = Sprite::create("ui/grey_sliderHorizontal.png");
 //    sp->setPosition(0, pos);
@@ -381,14 +381,14 @@ void HelloWorld::createInviteDialog() {
     label->setPosition(-width/2 + label->getContentSize().width/2 + padding * 2, pos);
     _inviteDialog->addChild(label);
     pos -= label->getContentSize().height;
-    
+
     pos -= padding;
     label = Label::createWithSystemFont(_inviteText, "sans", 20);
     label->setTextColor(Color4B(64, 64, 64, 255));
     label->setPosition(-width/2 + label->getContentSize().width/2 + padding * 2, pos);
     _inviteDialog->addChild(label);
     pos -= label->getContentSize().height;
-    
+
     pos -= padding;
     sp = Sprite::create("ui/grey_sliderHorizontal.png");
     sp->setPosition(0, pos);
@@ -414,7 +414,7 @@ void HelloWorld::createInviteDialog() {
     _inviteDialog->addChild(sv);
     sv->setTag(TAG_SCROLLVIEW);
     pos -= svSize.height;
-    
+
     //cancel ok button
     auto button = cocos2d::ui::Button::create("ui/red_button04.png", "ui/red_button05.png");
     button->setPosition(Vec2(- width/4, pos - buttonH/2));
@@ -467,19 +467,19 @@ void HelloWorld::createInviteDialog() {
         posX += cb->getContentSize().width/2;
         cb->setTag(TAG_CHECKBOX + i);
         cb->addEventListener(std::bind(&HelloWorld::onCheckBoxState, this, std::placeholders::_1, std::placeholders::_2));
-        
+
         //head image
         sp = Sprite::create("ui/red_circle.png");
         sp->setPosition(posX + sp->getContentSize().width/2, 0);
         posX += sp->getContentSize().width;
         n->addChild(sp);
-        
+
         //user name
         label = Label::createWithSystemFont(user.getName(), "sans", 20);
         label->setTextColor(Color4B(16, 16, 16, 255));
         label->setPosition(posX + label->getContentSize().width/2, 0);
         n->addChild(label);
-        
+
         i++;
     }
 }
@@ -490,7 +490,7 @@ void HelloWorld::showInviteableFriends() {
         return;
     }
     sv->removeAllChildren();
-    
+
     int column = 2;
     int x = 0, y = 0;
     int i = 0;
@@ -510,12 +510,12 @@ void HelloWorld::showInviteableFriends() {
     for (auto user : _inviteableUsers) {
         x = i % column;
         y = i / column;
-        
+
         Node* n = new Node();
         n->setPosition(x * innerSize.width/column, innerSize.height - userHeight * (y + 0.5));
         sv->addChild(n);
         int posX = 0;
-        
+
         cocos2d::ui::CheckBox* cb = cocos2d::ui::CheckBox::create("ui/green_button06.png", "ui/green_checkmark.png");
         posX += cb->getContentSize().width/2;
         cb->setPosition(Vec2(posX, 0));
@@ -523,7 +523,7 @@ void HelloWorld::showInviteableFriends() {
         posX += cb->getContentSize().width/2;
         cb->setTag(TAG_CHECKBOX + i);
         cb->addEventListener(std::bind(&HelloWorld::onCheckBoxState, this, std::placeholders::_1, std::placeholders::_2));
-        
+
         //head image
         //sp = Sprite::create("ui/red_circle.png");
         sp = SpriteEx::createWithUrl(user.getPictureURL());
@@ -538,7 +538,7 @@ void HelloWorld::showInviteableFriends() {
         label->setTextColor(Color4B(16, 16, 16, 255));
         label->setPosition(posX + label->getContentSize().width/2, 0);
         n->addChild(label);
-        
+
         i++;
     }
 }
@@ -571,8 +571,10 @@ void HelloWorld::onCheckStatus(cocos2d::Ref* sender)
 void HelloWorld::onGetMyInfo(cocos2d::Ref* sender)
 {
     CCLOG("##FB %s", __FUNCTION__);
-    
+
+    // https://developers.facebook.com/docs/graph-api/reference/v2.3/user
     sdkbox::FBAPIParam params;
+    params["fields"] = "id,name,email,first_name,installed,last_name";
     PluginFacebook::api("me", "GET", params, "me");
 }
 
@@ -586,7 +588,7 @@ void HelloWorld::onGetMyFriends(cocos2d::Ref* sender)
 void HelloWorld::onCaptureScreen(cocos2d::Ref *sender)
 {
     CCLOG("##FB %s", __FUNCTION__);
-    
+
     utils::captureScreen(CC_CALLBACK_2(HelloWorld::afterCaptureScreen, this), "screen.png");
 }
 
@@ -602,7 +604,7 @@ void HelloWorld::afterCaptureScreen(bool yes, const std::string &outputFilename)
 void HelloWorld::onShareLink(cocos2d::Ref* sender)
 {
     CCLOG("##FB %s", __FUNCTION__);
-    
+
     FBShareInfo info;
     info.type  = FB_LINK;
     info.link  = "http://www.cocos2d-x.org";
@@ -615,11 +617,11 @@ void HelloWorld::onShareLink(cocos2d::Ref* sender)
 void HelloWorld::onSharePhoto(cocos2d::Ref* sender)
 {
     CCLOG("##FB %s", __FUNCTION__);
-    
+
     if (!_captureFilename.empty() && FileUtils::getInstance()->isFileExist(_captureFilename))
     {
         CCLOG("##FB dialog photo: %s", _captureFilename.c_str());
-        
+
         FBShareInfo info;
         info.type  = FB_PHOTO;
         info.title = "capture screen";
@@ -635,7 +637,7 @@ void HelloWorld::onSharePhoto(cocos2d::Ref* sender)
 void HelloWorld::onDialogLink(cocos2d::Ref* sender)
 {
     CCLOG("##FB %s", __FUNCTION__);
-    
+
     FBShareInfo info;
     info.type  = FB_LINK;
     info.link  = "http://www.cocos2d-x.org";
@@ -648,7 +650,7 @@ void HelloWorld::onDialogLink(cocos2d::Ref* sender)
 void HelloWorld::onDialogPhoto(cocos2d::Ref* sender)
 {
     CCLOG("##FB %s", __FUNCTION__);
-    
+
     if (!_captureFilename.empty() && FileUtils::getInstance()->isFileExist(_captureFilename))
     {
         CCLOG("dialog photo: %s", _captureFilename.c_str());
@@ -667,14 +669,14 @@ void HelloWorld::onDialogPhoto(cocos2d::Ref* sender)
 void HelloWorld::onRequestReadPermission(cocos2d::Ref *sender)
 {
     CCLOG("##FB %s", __FUNCTION__);
-    
+
     PluginFacebook::requestReadPermissions({FB_PERM_READ_USER_FRIENDS});
 }
 
 void HelloWorld::onRequestPublishPermission(cocos2d::Ref *sender)
 {
     CCLOG("##FB %s", __FUNCTION__);
-    
+
     PluginFacebook::requestPublishPermissions({FB_PERM_PUBLISH_POST});
 }
 
@@ -696,12 +698,12 @@ void HelloWorld::onInviteFriendsCustomUI(cocos2d::Ref* sender ) {
 void HelloWorld::onLogin(bool isLogin, const std::string& error)
 {
     INFO("##FB onLogin: %s, msg: %s", isLogin ? "yes":"no", error.c_str());
-    
+
     if (isLogin)
     {
         _loginItem->setString("Logout");
     }
-    
+
     std::string title = "login ";
     title.append((isLogin ? "success" : "failed"));
     //MessageBox(error.c_str(), title.c_str());
@@ -723,28 +725,28 @@ void HelloWorld::onAPI(const std::string& tag, const std::string& jsonData)
 void HelloWorld::onSharedSuccess(const std::string& message)
 {
     CCLOG("##FB onSharedSuccess:%s", message.c_str());
-    
+
     MessageBox(message.c_str(), "share success");
 }
 
 void HelloWorld::onSharedFailed(const std::string& message)
 {
     CCLOG("##FB onSharedFailed:%s", message.c_str());
-    
+
     MessageBox(message.c_str(), "share failed");
 }
 
 void HelloWorld::onSharedCancel()
 {
     CCLOG("##FB onSharedCancel");
-    
+
     MessageBox("", "share cancel");
 }
 
 void HelloWorld::onPermission(bool isLogin, const std::string& error)
 {
     CCLOG("##FB onPermission: %d, error: %s", isLogin, error.c_str());
-    
+
     std::string title = "permission ";
     title.append((isLogin ? "success" : "failed"));
     MessageBox(error.c_str(), title.c_str());
