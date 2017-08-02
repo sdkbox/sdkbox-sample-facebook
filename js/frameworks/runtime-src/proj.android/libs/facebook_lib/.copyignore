@@ -1,5 +1,6 @@
 [
 ".copyignore",
 "gen",
-"bin"
+"bin",
+"build"
 ]

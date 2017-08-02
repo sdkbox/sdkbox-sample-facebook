@@ -18,9 +18,13 @@
     IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.facebook">
-    <application/>
-    <uses-sdk android:minSdkVersion="9" />
+    package="com.facebook" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="23" />
+
+    <application />
+
 </manifest>

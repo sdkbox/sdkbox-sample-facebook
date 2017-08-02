@@ -221,6 +221,8 @@ namespace sdkbox
         virtual void onInviteFriendsResult( bool result, const std::string& msg )= 0;
 
         virtual void onGetUserInfo( const FBGraphUser& userInfo ) = 0;
+        virtual void onRequestGiftResult(bool result, const std::string& msg) {}
+        virtual void onSendGiftResult(bool result, const std::string& msg) {}
     };
 
     class PluginFacebook
@@ -378,6 +380,31 @@ namespace sdkbox
          * Set the app url scheme suffix used by the FB SDK.
          */
         static void setAppURLSchemeSuffix(const std::string& appURLSchemeSuffix);
+
+        /**
+         * Ask friends for a gift
+         */
+        static void requestGift(const std::vector<std::string>& invite_ids, const std::string& object_id, const std::string& message, const std::string& title = "", const std::string& additional_data = "");
+
+        /**
+         * Send friend a gift
+         */
+        static void sendGift(const std::vector<std::string>& friend_ids, const std::string& object_id, const std::string& title, const std::string& message, const std::string& additional_data = "");
+
+        /**
+         * Log event
+         */
+        static void logEvent(const std::string& eventName);
+
+        /**
+         * Log event with value
+         */
+        static void logEvent(const std::string& eventName, float valueToSum);
+
+        /**
+         * Log purchase event
+         */
+        static void logPurchase(float mount, const std::string& currency);
     };
 }
 

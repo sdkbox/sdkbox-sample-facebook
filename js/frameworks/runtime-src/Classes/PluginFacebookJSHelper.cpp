@@ -32,21 +32,21 @@ JSOBJECT* FBInvitableFriendsInfoToJS( JSContext* cx, const sdkbox::FBInvitableFr
     JS_INIT_CONTEXT_FOR_UPDATE(cx);
 
     // collection of FBGraphUser
-        JSOBJECT *jarr= JS_NEW_ARRAY(cx, ifap.getNumInvitationTokens());
+    JSOBJECT *jarr= JS_NEW_ARRAY(cx, ifap.getNumInvitationTokens());
 
-        uint32_t index=0;
-        for( auto u= ifap.begin(); u!=ifap.end(); ++u ) {
-            JSOBJECT* gu= FBGraphUserToJS( cx, *(u) );
-            JS_ARRAY_SET( cx, jarr, index, gu );
-            index++;
-        }
+    uint32_t index=0;
+    for( auto u= ifap.begin(); u!=ifap.end(); ++u ) {
+        JSOBJECT* gu= FBGraphUserToJS( cx, *(u) );
+        JS_ARRAY_SET( cx, jarr, index, gu );
+        index++;
+    }
 
     // cursor data
-        JSOBJECT* jsobj= JS_NEW_OBJECT(cx);
-        addProperty( cx, jsobj, "next_url", ifap.getNextURL() );
-        addProperty( cx, jsobj, "prev_url", ifap.getPrevURL() );
-        addProperty( cx, jsobj, "prev_cursor", ifap.getPrevCursor() );
-        addProperty( cx, jsobj, "next_cursor", ifap.getNextCursor() );
+    JSOBJECT* jsobj= JS_NEW_OBJECT(cx);
+    addProperty( cx, jsobj, "next_url", ifap.getNextURL() );
+    addProperty( cx, jsobj, "prev_url", ifap.getPrevURL() );
+    addProperty( cx, jsobj, "prev_cursor", ifap.getPrevCursor() );
+    addProperty( cx, jsobj, "next_cursor", ifap.getNextCursor() );
 
     // data
     JSOBJECT* ret= JS_NEW_OBJECT(cx);
@@ -63,7 +63,7 @@ public:
     }
 
 private:
-    void invokeDelegate(std::string& fName, jsval dataVal[], int argc) {
+    void invokeDelegate(std::string& fName, JS::Value dataVal[], int argc) {
         if (!s_cx) {
             return;
         }
@@ -91,7 +91,7 @@ private:
             if(!JS_GetProperty(cx, obj, func_name, &func_handle)) {
                 return;
             }
-            if(func_handle == JSVAL_VOID) {
+            if(func_handle == JS::NullValue()) {
                 return;
             }
 
@@ -116,88 +116,162 @@ public:
     virtual void onLogin(bool isLogin, const std::string& error)
     {
         std::string name("onLogin");
-        jsval dataVal[2];
-        dataVal[0] = BOOLEAN_TO_JSVAL(isLogin);
-        dataVal[1] = c_string_to_jsval(s_cx, error.c_str());
+        JS::Value dataVal[2];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = JS::BooleanValue(isLogin);
+        dataVal[1] = SB_STR_TO_JSVAL(s_cx, error);
         invokeDelegate(name, dataVal, 2);
     }
     virtual void onSharedSuccess(const std::string& message)
     {
         std::string name("onSharedSuccess");
-        jsval dataVal[1];
-        dataVal[0] = c_string_to_jsval(s_cx, message.c_str());
+        JS::Value dataVal[1];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = SB_STR_TO_JSVAL(s_cx, message);
         invokeDelegate(name, dataVal, 1);
     }
     virtual void onSharedFailed(const std::string& message)
     {
         std::string name("onSharedFailed");
-        jsval dataVal[1];
-        dataVal[0] = c_string_to_jsval(s_cx, message.c_str());
+        JS::Value dataVal[1];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = SB_STR_TO_JSVAL(s_cx, message);
         invokeDelegate(name, dataVal, 1);
     }
     virtual void onSharedCancel()
     {
         std::string name("onSharedCancel");
-        jsval dataVal[0];
+        JS::Value dataVal[0];
         invokeDelegate(name, dataVal, 0);
     }
     virtual void onAPI(const std::string& tag, const std::string& jsonData)
     {
         std::string name("onAPI");
-        jsval dataVal[2];
-        dataVal[0] = c_string_to_jsval(s_cx, tag.c_str());
-        dataVal[1] = c_string_to_jsval(s_cx, jsonData.c_str());
+        JS::Value dataVal[2];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = SB_STR_TO_JSVAL(s_cx, tag);
+        dataVal[1] = SB_STR_TO_JSVAL(s_cx, jsonData);
         invokeDelegate(name, dataVal, 2);
     }
     virtual void onPermission(bool isLogin, const std::string& error)
     {
         std::string name("onPermission");
-        jsval dataVal[2];
-        dataVal[0] = BOOLEAN_TO_JSVAL(isLogin);
-        dataVal[1] = c_string_to_jsval(s_cx, error.c_str());
+        JS::Value dataVal[2];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = JS::BooleanValue(isLogin);
+        dataVal[1] = SB_STR_TO_JSVAL(s_cx, error);
         invokeDelegate(name, dataVal, 2);
     }
     virtual void onFetchFriends(bool ok, const std::string& msg)
     {
         std::string name("onFetchFriends");
-        jsval dataVal[2];
-        dataVal[0] = BOOLEAN_TO_JSVAL(ok);
-        dataVal[1] = c_string_to_jsval(s_cx, msg.c_str());
+        JS::Value dataVal[2];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = JS::BooleanValue(ok);
+        dataVal[1] = SB_STR_TO_JSVAL(s_cx, msg);
         invokeDelegate(name, dataVal, 2);
     }
     virtual void onInviteFriendsResult(bool ok, const std::string& msg)
     {
         std::string name("onInviteFriendsResult");
-        jsval dataVal[2];
-        dataVal[0] = BOOLEAN_TO_JSVAL(ok);
-        dataVal[1] = c_string_to_jsval(s_cx, msg.c_str());
+        JS::Value dataVal[2];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = JS::BooleanValue(ok);
+        dataVal[1] = SB_STR_TO_JSVAL(s_cx, msg);
         invokeDelegate(name, dataVal, 2);
     }
     virtual void onInviteFriendsWithInviteIdsResult(bool ok, const std::string& msg)
     {
         std::string name("onInviteFriendsWithInviteIdsResult");
-        jsval dataVal[2];
-        dataVal[0] = BOOLEAN_TO_JSVAL(ok);
-        dataVal[1] = c_string_to_jsval(s_cx, msg.c_str());
+        JS::Value dataVal[2];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = JS::BooleanValue(ok);
+        dataVal[1] = SB_STR_TO_JSVAL(s_cx, msg);
         invokeDelegate(name, dataVal, 2);
     }
     virtual void onRequestInvitableFriends(const sdkbox::FBInvitableFriendsInfo& invitable_friends_and_pagination )
     {
         std::string name("onRequestInvitableFriends");
-        jsval dataVal[1];
-        dataVal[0] = OBJECT_TO_JSVAL(FBInvitableFriendsInfoToJS( s_cx, invitable_friends_and_pagination));
+        JS::Value dataVal[1];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = JS::ObjectValue(*FBInvitableFriendsInfoToJS(s_cx, invitable_friends_and_pagination));
         invokeDelegate(name, dataVal, 1);
     }
     virtual void onGetUserInfo(const sdkbox::FBGraphUser& userInfo )
     {
         std::string name("onGetUserInfo");
-        jsval dataVal[1];
-        dataVal[0] = OBJECT_TO_JSVAL(FBGraphUserToJS( s_cx, userInfo ));
+        JS::Value dataVal[1];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = JS::ObjectValue(*FBGraphUserToJS( s_cx, userInfo ));
         invokeDelegate(name, dataVal, 1);
     }
+    virtual void onRequestGiftResult(bool result, const std::string& msg)
+    {
+        std::string name(__FUNCTION__);
+        JS::Value dataVal[2];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
+
+        dataVal[0] = JS::BooleanValue(result);
+        dataVal[1] = SB_STR_TO_JSVAL(s_cx, msg);
+        invokeDelegate(name, dataVal, 2);
+    }
+    virtual void onSendGiftResult(bool result, const std::string& msg)
+    {
+        std::string name(__FUNCTION__);
+        JS::Value dataVal[2];
+
+#if MOZJS_MAJOR_VERSION < 52
+        JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
+#endif
 
 
-
+        dataVal[0] = JS::BooleanValue(result);
+        dataVal[1] = SB_STR_TO_JSVAL(s_cx, msg);
+        invokeDelegate(name, dataVal, 2);
+    }
 };
 
 static sdkbox::FBShareInfo map_to_FBShareInfo(const std::map<std::string, std::string>& dict)
@@ -237,7 +311,7 @@ static sdkbox::FBShareInfo map_to_FBShareInfo(const std::map<std::string, std::s
 }
 
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_setListener(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_setListener(JSContext *cx, uint32_t argc, JS::Value *vp)
 #elif defined(JS_VERSION)
 JSBool js_PluginFacebookJS_PluginFacebook_setListener(JSContext *cx, unsigned argc, JS::Value *vp)
 #endif
@@ -255,19 +329,19 @@ JSBool js_PluginFacebookJS_PluginFacebook_setListener(JSContext *cx, unsigned ar
 
         JSB_PRECONDITION2(ok, cx, false, "js_PluginFacebookJS_PluginFacebook_setListener : Error processing arguments");
         FacebookListenerJsHelper* lis = new FacebookListenerJsHelper();
-        lis->setJSDelegate(args.get(0));
+        lis->setJSDelegate(cx, args.get(0));
         sdkbox::PluginFacebook::setListener(lis);
 
         args.rval().setUndefined();
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_setListener : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_setListener : wrong number of arguments");
     return false;
 }
 
 
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_share(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_share(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
@@ -279,7 +353,7 @@ bool js_PluginFacebookJS_PluginFacebook_share(JSContext *cx, uint32_t argc, jsva
         args.rval().setUndefined();
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_share : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_share : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -292,16 +366,16 @@ JSBool js_PluginFacebookJS_PluginFacebook_share(JSContext *cx, uint32_t argc, js
         ok &= sdkbox::jsval_to_std_map_string_string(cx, argv[0], &arg0);
         JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
         sdkbox::PluginFacebook::share(map_to_FBShareInfo(arg0));
-        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        JS_SET_RVAL(cx, vp, JS::NullValue());
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_api(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_api(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
@@ -319,7 +393,7 @@ bool js_PluginFacebookJS_PluginFacebook_api(JSContext *cx, uint32_t argc, jsval 
         args.rval().setUndefined();
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_api : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_api : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -338,17 +412,17 @@ JSBool js_PluginFacebookJS_PluginFacebook_api(JSContext *cx, uint32_t argc, jsva
         ok &= jsval_to_std_string(cx, argv[3], &tag);
         JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
         sdkbox::PluginFacebook::api(path, method, param, tag);
-        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        JS_SET_RVAL(cx, vp, JS::NullValue());
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 
 
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_dialog(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_dialog(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
@@ -360,7 +434,7 @@ bool js_PluginFacebookJS_PluginFacebook_dialog(JSContext *cx, uint32_t argc, jsv
         args.rval().setUndefined();
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_dialog : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_dialog : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -373,15 +447,15 @@ JSBool js_PluginFacebookJS_PluginFacebook_dialog(JSContext *cx, uint32_t argc, j
         ok &= sdkbox::jsval_to_std_map_string_string(cx, argv[0], &arg0);
         JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
         sdkbox::PluginFacebook::dialog(map_to_FBShareInfo(arg0));
-        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        JS_SET_RVAL(cx, vp, JS::NullValue());
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_requestReadPermissions(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_requestReadPermissions(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
@@ -393,7 +467,7 @@ bool js_PluginFacebookJS_PluginFacebook_requestReadPermissions(JSContext *cx, ui
         args.rval().setUndefined();
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_requestReadPermissions : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_requestReadPermissions : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -406,15 +480,15 @@ JSBool js_PluginFacebookJS_PluginFacebook_requestReadPermissions(JSContext *cx, 
         ok &= sdkbox::jsval_to_std_vector_string(cx, argv[0], &arg0);
         JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
         sdkbox::PluginFacebook::requestReadPermissions(arg0);
-        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        JS_SET_RVAL(cx, vp, JS::NullValue());
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_requestPublishPermissions(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_requestPublishPermissions(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
@@ -426,7 +500,7 @@ bool js_PluginFacebookJS_PluginFacebook_requestPublishPermissions(JSContext *cx,
         args.rval().setUndefined();
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_requestPublishPermissions : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_requestPublishPermissions : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -439,25 +513,25 @@ JSBool js_PluginFacebookJS_PluginFacebook_requestPublishPermissions(JSContext *c
         ok &= sdkbox::jsval_to_std_vector_string(cx, argv[0], &arg0);
         JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
         sdkbox::PluginFacebook::requestPublishPermissions(arg0);
-        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        JS_SET_RVAL(cx, vp, JS::NullValue());
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_getPermissionList(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_getPermissionList(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     if (argc == 0) {
         std::vector<std::string> ret = sdkbox::PluginFacebook::getPermissionList();
-        jsval jsret = JSVAL_NULL;
-        jsret = std_vector_string_to_jsval(cx, ret);
+        JS::RootedValue jsret(cx);
+        sdkbox::std_vector_string_to_jsval(cx, ret, &jsret);
         args.rval().set(jsret);
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_getPermissionList : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_getPermissionList : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -470,12 +544,12 @@ JSBool js_PluginFacebookJS_PluginFacebook_getPermissionList(JSContext *cx, uint3
         JS_SET_RVAL(cx, vp, jsret);
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_getFriends(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_getFriends(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     if (argc == 0) {
@@ -494,7 +568,12 @@ bool js_PluginFacebookJS_PluginFacebook_getFriends(JSContext *cx, uint32_t argc,
             friendInfoDict[FBGraphUser_INSTALLED] = friendInfo.isInstalled;
             array.push_back(cocos2d::Value(friendInfoDict));
         }
-        jsval jsret = ccvaluevector_to_jsval(cx, array);
+        JS::RootedValue jsret(cx);
+#if MOZJS_MAJOR_VERSION >= 52
+        ccvaluevector_to_jsval(cx, array, &jsret);
+#else
+        jsret = ccvaluevector_to_jsval(cx, array);
+#endif
 #else
         cocos2d::CCArray *array = cocos2d::CCArray::create();
         array->retain();
@@ -516,7 +595,7 @@ bool js_PluginFacebookJS_PluginFacebook_getFriends(JSContext *cx, uint32_t argc,
         args.rval().set(jsret);
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_getFriends : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_getFriends : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -544,13 +623,13 @@ JSBool js_PluginFacebookJS_PluginFacebook_getFriends(JSContext *cx, uint32_t arg
         JS_SET_RVAL(cx, vp, jsret);
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_canPresentWithFBApp(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_canPresentWithFBApp(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
@@ -560,12 +639,11 @@ bool js_PluginFacebookJS_PluginFacebook_canPresentWithFBApp(JSContext *cx, uint3
         JSB_PRECONDITION2(ok, cx, false, "js_PluginFacebookJS_PluginFacebook_canPresentWithFBApp : Error processing arguments");
         bool canPresent = sdkbox::PluginFacebook::canPresentWithFBApp(map_to_FBShareInfo(arg0));
 
-        jsval jsret = BOOLEAN_TO_JSVAL(canPresent);
-        args.rval().set(jsret);
+        args.rval().set(JS::BooleanValue(canPresent));
 
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_canPresentWithFBApp : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_canPresentWithFBApp : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -583,13 +661,13 @@ JSBool js_PluginFacebookJS_PluginFacebook_canPresentWithFBApp(JSContext *cx, uin
         JS_SET_RVAL(cx, vp, jsret);
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_inviteFriends(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_inviteFriends(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
@@ -607,7 +685,7 @@ bool js_PluginFacebookJS_PluginFacebook_inviteFriends(JSContext *cx, uint32_t ar
         args.rval().setUndefined();
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_inviteFriends : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_inviteFriends : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -625,17 +703,17 @@ JSBool js_PluginFacebookJS_PluginFacebook_inviteFriends(JSContext *cx, uint32_t 
         JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
 
         sdkbox::PluginFacebook::inviteFriends( app_link_url, preview_image_url );
-        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        JS_SET_RVAL(cx, vp, JS::NullValue());
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 
 
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_requestInvitableFriends(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_requestInvitableFriends(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
@@ -649,7 +727,7 @@ bool js_PluginFacebookJS_PluginFacebook_requestInvitableFriends(JSContext *cx, u
         args.rval().setUndefined();
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_requestInvitableFriends : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_requestInvitableFriends : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -663,17 +741,17 @@ JSBool js_PluginFacebookJS_PluginFacebook_requestInvitableFriends(JSContext *cx,
         JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
         sdkbox::PluginFacebook::requestInvitableFriends(arg0);
 
-        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        JS_SET_RVAL(cx, vp, JS::NullValue());
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
 
 
 #if defined(MOZJS_MAJOR_VERSION)
-bool js_PluginFacebookJS_PluginFacebook_inviteFriendsWithInviteIds(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_PluginFacebookJS_PluginFacebook_inviteFriendsWithInviteIds(JSContext *cx, uint32_t argc, JS::Value *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     bool ok = true;
@@ -695,7 +773,7 @@ bool js_PluginFacebookJS_PluginFacebook_inviteFriendsWithInviteIds(JSContext *cx
         args.rval().setUndefined();
         return true;
     }
-    JS_ReportError(cx, "js_PluginFacebookJS_PluginFacebook_inviteFriendsWithInviteIds : wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "js_PluginFacebookJS_PluginFacebook_inviteFriendsWithInviteIds : wrong number of arguments");
     return false;
 }
 #elif defined(JS_VERSION)
@@ -718,10 +796,10 @@ JSBool js_PluginFacebookJS_PluginFacebook_inviteFriendsWithInviteIds(JSContext *
 
         sdkbox::PluginFacebook::inviteFriendsWithInviteIds(ids, title, text);
 
-        JS_SET_RVAL(cx, vp, JSVAL_VOID);
+        JS_SET_RVAL(cx, vp, JS::NullValue());
         return JS_TRUE;
     }
-    JS_ReportError(cx, "wrong number of arguments");
+    JS_ReportErrorUTF8(cx, "wrong number of arguments");
     return JS_FALSE;
 }
 #endif
@@ -766,7 +844,7 @@ void register_all_PluginFacebookJS_helper(JSContext* cx, JSObject* obj) {
         subChar = sub.c_str();
 
         JS_GetProperty(cx, obj, subChar, &nsval);
-        if (nsval == JSVAL_VOID) {
+        if (nsval == JS::NullValue()) {
             pluginObj = JS_NewObject(cx, NULL, NULL, NULL);
             nsval = OBJECT_TO_JSVAL(pluginObj);
             JS_SetProperty(cx, obj, subChar, nsval);
