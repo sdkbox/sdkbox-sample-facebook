@@ -2,10 +2,10 @@
 <classpath>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="org.eclipse.andmore.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.andmore.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.andmore.DEPENDENCIES"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
