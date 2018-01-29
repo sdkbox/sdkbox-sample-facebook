@@ -44,3 +44,8 @@ js/frameworks/runtime-src/proj.android/libs/facebook_lib/gen/
 js/frameworks/runtime-src/proj.android/libs/facebook_lib/local.properties
 js/frameworks/runtime-src/proj.android/libs/facebook_lib/proguard-project.txt
 js/frameworks/runtime-src/proj.android/libs/armeabi/
+cpp/proj.android/libs/android_support_v7/cardview/bin
+cpp/proj.android/libs/android_support_v7/appcompat/gen
+cpp/proj.android/libs/android_support_v7/cardview/gen
+local.properties
+cpp/proj.android/libs/android_support_v7/appcompat/bin

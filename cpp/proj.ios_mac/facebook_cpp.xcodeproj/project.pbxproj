@@ -421,7 +421,7 @@
 					"$(SRCROOT)/../../../sdkbox-cocos2d-x-binary/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../sdkbox-cocos2d-x-binary/prebuilt/ios",
 					"\"sdkbox.framework\"",
@@ -471,7 +471,7 @@
 					"$(SRCROOT)/../../../sdkbox-cocos2d-x-binary/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../sdkbox-cocos2d-x-binary/prebuilt/ios",
 					"\"sdkbox.framework\"",
