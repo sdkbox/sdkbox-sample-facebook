@@ -48,6 +48,7 @@ var HelloWorldLayer = cc.Layer.extend({
         self.coinsLabel = coinsLabel;
         var showText = function(msg) {
           cc.log(msg);
+          console.log(msg);
           self.coinsLabel.setString(msg);
         }
         self.showText = showText;
@@ -60,6 +61,7 @@ var HelloWorldLayer = cc.Layer.extend({
         self.iconSprite.setPosition(size.width / 2, size.height / 2);
         self.addChild(self.iconSprite);
 
+        self.invitableFBUserID = "";
         sdkbox.PluginFacebook.init();
         sdkbox.PluginFacebook.setListener({
             onLogin: function(isLogin, msg) {
@@ -123,6 +125,8 @@ var HelloWorldLayer = cc.Layer.extend({
                 cc.log(">> last name=%s", friend.lastName);
                 cc.log(">> is installed=%s", friend.isInstalled);
 
+                // self.invitableFBUserID = friend.uid;
+
                 var foo = ( function() {
                     var uid = friend.uid;
                     return {
@@ -145,8 +149,22 @@ var HelloWorldLayer = cc.Layer.extend({
                 }
               }
               self.menu.alignItemsHorizontally();
+            },
+            onRequestInvitableFriends: function(friendsData) {
+                self.showText(JSON.stringify(friendsData));
 
+                var friends = friendsData["data"];
+                if (friends.length > 0) {
+                    self.invitableFBUserID = friends["uid"];
+                }
+            },
+            onInviteFriendsWithInviteIdsResult: function (result, description) {
+              self.showText("onInviteFriendsWithInviteIdsResult result=" + (result?"ok":"error") + " " + description);
+            },
+            onInviteFriendsResult: function (result, description) {
+              self.showText("onInviteFriendsResult result=" + (result?"ok":"error") + " " + description);
             }
+
         });
 
         var btnLogin = new cc.MenuItemFont("Login", function(){
@@ -260,13 +278,25 @@ var HelloWorldLayer = cc.Layer.extend({
           sdkbox.PluginFacebook.dialog(params);
         });
 
+        var btnRequestInvitableFriends = new cc.MenuItemFont("requestInvitableFriends", function () {
+          self.showText("RequestInvitableFriends");
+          sdkbox.PluginFacebook.requestInvitableFriends({});
+        });
+
+        var btnInviteFriendsWithInviteIds = new cc.MenuItemFont("nviteFriendsWithInviteIds", function () {
+            var vec = [];
+            vec.push(self.invitableFBUserID);
+            sdkbox.PluginFacebook.inviteFriendsWithInviteIds(vec, "Invitation title", "Invitation text up to 60 chars.");
+        });
+
         var menu = new cc.Menu(btnLogin, btnLogout, btnCheck, btnReadPerm, btnWritePerm, btnShareLink,
                                btnDialogLink, btnInvite, btnMyInfo, btnFetchFriends,
-                               btnCaptureScreen, btnSharePhoto, btnDialogPhoto);
+                               btnCaptureScreen, btnSharePhoto, btnDialogPhoto,
+                               btnRequestInvitableFriends, btnInviteFriendsWithInviteIds);
         var winsize = cc.winSize;
         menu.x = winsize.width/2;
         menu.y = winsize.height/2;
-        menu.alignItemsVerticallyWithPadding(20);
+        menu.alignItemsVerticallyWithPadding(10);
         this.addChild(menu);
     }
 });
