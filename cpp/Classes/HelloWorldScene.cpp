@@ -574,8 +574,8 @@ void HelloWorld::onGetMyInfo(cocos2d::Ref* sender)
 
     // https://developers.facebook.com/docs/graph-api/reference/v2.3/user
     sdkbox::FBAPIParam params;
-    params["fields"] = "id,name,email,first_name,installed,last_name";
-    PluginFacebook::api("me", "GET", params, "me");
+    params["fields"] = "id,name,email,first_name,installed,last_name,picture{url}";
+    PluginFacebook::api("me", "GET", params, "me_more");
 }
 
 void HelloWorld::onGetMyFriends(cocos2d::Ref* sender)
