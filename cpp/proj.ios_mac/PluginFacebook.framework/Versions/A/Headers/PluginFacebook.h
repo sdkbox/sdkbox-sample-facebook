@@ -34,6 +34,10 @@ namespace sdkbox
         FB_LINK  = 1,
         FB_PHOTO = 2
     };
+    
+    static const int FBSDKLoginBehaviorNative = 0;
+    static const int FBSDKLoginBehaviorBrowser = 1;
+    static const int FBSDKLoginBehaviorSystemAccount = 2;
 
     typedef std::map<std::string, std::string> FBAPIParam;
 
@@ -221,7 +225,8 @@ namespace sdkbox
         virtual void onInviteFriendsResult( bool result, const std::string& msg )= 0;
 
         virtual void onGetUserInfo( const FBGraphUser& userInfo ) = 0;
-        virtual void onAskGiftResult(bool result, const std::string& msg) {}
+        virtual void onRequestGiftResult(bool result, const std::string& msg) {}
+        virtual void onSendGiftResult(bool result, const std::string& msg) {}
     };
 
     class PluginFacebook
@@ -248,6 +253,12 @@ namespace sdkbox
          * Remove the listener, and can't listen to events anymore
          */
         static void removeListener();
+
+        /**
+         * @brief login
+         *
+         */
+        static void setLoginBehavior(int loginBehavior);
 
         /**
          * @brief log in
@@ -383,7 +394,27 @@ namespace sdkbox
         /**
          * Ask friends for a gift
          */
-        static void requestGift(const std::vector<std::string>& invite_ids, const std::string& object_id, const std::string& message);
+        static void requestGift(const std::vector<std::string>& invite_ids, const std::string& object_id, const std::string& message, const std::string& title = "", const std::string& additional_data = "");
+
+        /**
+         * Send friend a gift
+         */
+        static void sendGift(const std::vector<std::string>& friend_ids, const std::string& object_id, const std::string& title, const std::string& message, const std::string& additional_data = "");
+
+        /**
+         * Log event
+         */
+        static void logEvent(const std::string& eventName);
+
+        /**
+         * Log event with value
+         */
+        static void logEvent(const std::string& eventName, float valueToSum);
+
+        /**
+         * Log purchase event
+         */
+        static void logPurchase(float mount, const std::string& currency);
     };
 }
 

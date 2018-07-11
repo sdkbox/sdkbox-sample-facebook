@@ -10,12 +10,16 @@ LOCAL_MODULE := cocos2dcpp_shared
 
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
-LOCAL_SRC_FILES := hellocpp/main.cpp ../../Classes/AppDelegate.cpp ../../Classes/HelloWorldScene.cpp
+LOCAL_SRC_FILES := hellocpp/main.cpp \
+../../Classes/AppDelegate.cpp \
+../../Classes/HelloWorldScene.cpp
 
 LOCAL_CPPFLAGS := -DSDKBOX_ENABLED
-LOCAL_LDLIBS := -landroid -llog
+LOCAL_LDLIBS := -landroid \
+-llog
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
-LOCAL_WHOLE_STATIC_LIBRARIES := PluginFacebook sdkbox
+LOCAL_WHOLE_STATIC_LIBRARIES := PluginFacebook \
+sdkbox
 
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END

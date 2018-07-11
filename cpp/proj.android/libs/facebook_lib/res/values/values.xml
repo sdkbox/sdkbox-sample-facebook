@@ -8,6 +8,7 @@
     <color name="com_facebook_button_background_color_pressed">#2f477a</color>
     <color name="com_facebook_button_background_color_selected">#7c8fc8</color>
     <color name="com_facebook_button_border_color_focused">#dedee6</color>
+    <color name="com_facebook_button_login_background_color">#4267b2</color>
     <color name="com_facebook_button_login_silver_background_color">#f4f6f8</color>
     <color name="com_facebook_button_login_silver_background_color_pressed">#e9eaf0</color>
     <color name="com_facebook_button_send_background_color">@color/com_facebook_messenger_blue</color>
@@ -25,6 +26,7 @@
     <dimen name="com_facebook_auth_dialog_corner_radius">2dp</dimen>
     <dimen name="com_facebook_auth_dialog_corner_radius_oversized">4dp</dimen>
     <dimen name="com_facebook_button_corner_radius">2dp</dimen>
+    <dimen name="com_facebook_button_login_corner_radius">3dp</dimen>
     <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
     <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
     <dimen name="com_facebook_likeboxcountview_caret_height">3dp</dimen>
@@ -44,7 +46,7 @@
     <dimen name="com_facebook_share_button_padding_top">12dp</dimen>
     <dimen name="com_facebook_share_button_text_size">16.0sp</dimen>
     <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
-    <string name="com_facebook_device_auth_instructions">Visit &lt;b>facebook.com/device&lt;/b> and enter your code.</string>
+    <string name="com_facebook_device_auth_instructions">Visit &lt;b>facebook.com/device&lt;/b> and enter the code shown above.</string>
     <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
     <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
     <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
@@ -53,6 +55,7 @@
     <string name="com_facebook_loading">Loading…</string>
     <string name="com_facebook_loginview_cancel_action">Cancel</string>
     <string name="com_facebook_loginview_log_in_button">Log in</string>
+    <string name="com_facebook_loginview_log_in_button_continue">Continue with Facebook</string>
     <string name="com_facebook_loginview_log_in_button_long">Log in with Facebook</string>
     <string name="com_facebook_loginview_log_out_action">Log out</string>
     <string name="com_facebook_loginview_log_out_button">Log out</string>
@@ -60,15 +63,12 @@
     <string name="com_facebook_loginview_logged_in_using_facebook">Logged in using Facebook</string>
     <string name="com_facebook_send_button_text">Send</string>
     <string name="com_facebook_share_button_text">Share</string>
-    <string name="com_facebook_smart_device_instructions_0">Confirm your code on Facebook.</string>
-    <string name="com_facebook_smart_device_instructions_1">1.\tGo to the Menu</string>
-    <string name="com_facebook_smart_device_instructions_2">2.\tSelect Device Requests</string>
-    <string name="com_facebook_smart_device_instructions_3">3.\tConfirm code.</string>
+    <string name="com_facebook_smart_device_instructions">To connect your account, open the Facebook app on your mobile device and check for notifications.</string>
     <string name="com_facebook_smart_device_instructions_or">- OR -</string>
     <string name="com_facebook_smart_login_confirmation_cancel">Not you?</string>
     <string name="com_facebook_smart_login_confirmation_continue_as">Continue as %1$s</string>
     <string name="com_facebook_smart_login_confirmation_title">Confirm Login</string>
-    <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
+    <string name="com_facebook_tooltip_default">You\'re in control - choose what info you want to share with apps.</string>
     <string name="messenger_send_button_text">Send</string>
     <style name="MessengerButton">
     <item name="android:clickable">true</item>
@@ -174,7 +174,11 @@
         <item name="android:text">@string/com_facebook_share_button_text</item>
     </style>
     <style name="com_facebook_loginview_default_style" parent="com_facebook_button">
-        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
+        <item name="android:background">@drawable/com_facebook_button_login_background</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
+        <item name="android:textSize">13.0dp</item>
     </style>
     <style name="com_facebook_loginview_silver_style" parent="com_facebook_loginview_default_style">
         <item name="android:background">@drawable/com_facebook_button_login_silver_background</item>
