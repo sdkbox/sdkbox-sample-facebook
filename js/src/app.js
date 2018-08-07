@@ -26,7 +26,6 @@ var HelloWorldLayer = cc.Layer.extend({
         menu.x = winsize.width - size.width / 2 - 16;
         menu.y = size.height / 2 + 16;
         this.addChild(menu);
-
         return true;
     },
 
@@ -80,6 +79,10 @@ var HelloWorldLayer = cc.Layer.extend({
               if (tag == "me") {
                 var obj = JSON.parse(data);
                 self.showText(obj.name + " || " + obj.email);
+                                          
+                console.log("picture:" + obj.picture.data.url);
+//                console.log(">>" + data);
+                                          
               } else if (tag == "/me/friendlists") {
                 var obj = JSON.parse(data);
                 var friends = obj.data;
@@ -224,7 +227,7 @@ var HelloWorldLayer = cc.Layer.extend({
 
         var btnMyInfo = new cc.MenuItemFont("My Info", function () {
           var params = new Object();
-          params.fields = "name,email";
+          params.fields = "name,email,picture.width(500).height(500)"; // picture.type(large)
           sdkbox.PluginFacebook.api("me", "GET", params, "me");
         });
 
