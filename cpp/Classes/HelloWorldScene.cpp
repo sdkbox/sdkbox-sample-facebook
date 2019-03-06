@@ -167,6 +167,7 @@ bool HelloWorld::init()
 
     PluginFacebook::setListener(this);
     sdkbox::PluginFacebook::init();
+    // PluginFacebook::setLoginBehavior(0); // login with facebook app
 
 
     INFO("Facebook logged in ? %s", PluginFacebook::isLoggedIn() ? "yes" : "no");
