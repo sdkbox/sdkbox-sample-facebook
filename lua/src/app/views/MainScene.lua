@@ -1,5 +1,6 @@
 
 local MainScene = class("MainScene", cc.load("mvc").ViewBase)
+print = release_print
 cc.log = print
 function MainScene:onCreate()
     print("Sample Startup")
@@ -39,6 +40,7 @@ function MainScene:setupTestMenu()
     sdkbox.PluginFacebook:init()
     sdkbox.PluginFacebook:setListener(function(args)
 
+        print('--------- dump ---------')
         dump(args)
 
         if "onLogin" == args.name then
@@ -72,6 +74,8 @@ function MainScene:setupTestMenu()
             cc.log(msg)
         elseif "onSharedCancel" ==  args.name then
             showText("share canceled")
+        elseif 'onInviteFriendsWithInviteIdsResult' == args.name then
+            showText('onInviteFriendsWithInviteIdsResult')
         end
     end)
 
@@ -126,10 +130,12 @@ function MainScene:setupTestMenu()
     end)
 
     local btnInvite = cc.MenuItemFont:create("Invite"):onClicked(function ()
-        sdkbox.PluginFacebook:inviteFriends(
-            -- "https://fb.me/322164761287181",
-            "https://fb.me/402104823293174",
-            "http://www.cocos2d-x.org/attachments/801/cocos2dx_portrait.png")
+        -- sdkbox.PluginFacebook:inviteFriends(
+        --     -- "https://fb.me/322164761287181",
+        --     "https://fb.me/402104823293174",
+        --     "http://www.cocos2d-x.org/attachments/801/cocos2dx_portrait.png")
+
+        sdkbox.PluginFacebook:inviteFriendsWithInviteIds({''}, 'title', 'content')
     end)
 
     local menu = cc.Menu:create(btnLogin, btnLogout, btnCheck, btnReadPerm, btnWritePerm, btnShareLink, btnDialogLink, btnInvite)

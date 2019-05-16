@@ -431,6 +431,49 @@ tolua_lerror:
     return 0;
 }
 
+int lua_PluginFacebookLua_PluginFacebook_inviteFriendsWithInviteIds(lua_State* tolua_S) {
+    int argc = 0;
+    bool ok  = true;
+    
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+    
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"sdkbox.PluginFacebook",0,&tolua_err)) goto tolua_lerror;
+#endif
+    
+    argc = lua_gettop(tolua_S) - 1;
+    
+    if (argc == 3) {
+        LuaValueArray arg0;
+        ok &= luaval_to_ccluavaluevector(tolua_S, 2, &arg0);
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_PluginFacebookLua_PluginFacebook_inviteFriendsWithInviteIds'", nullptr);
+            return 0;
+        }
+        
+        std::vector<std::string> invite_ids;
+        for (LuaValueArrayIterator it = arg0.begin(); it != arg0.end(); it++) {
+            invite_ids.push_back(it->stringValue());
+        }
+        std::string title = luaL_checkstring(tolua_S, 3);
+        std::string invite_text = luaL_checkstring(tolua_S, 4);
+        
+        sdkbox::PluginFacebook::inviteFriendsWithInviteIds(invite_ids, title, invite_text);
+        lua_settop(tolua_S, 1);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "sdkbox.PluginFacebook:inviteFriendsWithInviteIds",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_PluginFacebookLua_PluginFacebook_inviteFriendsWithInviteIds'.",&tolua_err);
+#endif
+    return 0;
+}
+
 int lua_PluginFacebookLua_PluginFacebook_getFriends(lua_State* tolua_S)
 {
     int argc = 0;
@@ -539,6 +582,7 @@ int extern_PluginFacebook(lua_State* L) {
         tolua_function(L, "canPresentWithFBApp", lua_PluginFacebookLua_PluginFacebook_canPresentWithFBApp);
         tolua_function(L, "api", lua_PluginFacebookLua_PluginFacebook_api);
         tolua_function(L, "requestInvitableFriends", lua_PluginFacebookLua_PluginFacebook_requestInvitableFriends);
+        tolua_function(L, "inviteFriendsWithInviteIds", lua_PluginFacebookLua_PluginFacebook_inviteFriendsWithInviteIds);
     }
     lua_pop(L, 1);
 
